@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Cart
+  - PickUpZone
+  - IgnoreZone
+  - PickupZone
   layers:
   - Default
   - TransparentFX
