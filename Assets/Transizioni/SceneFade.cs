@@ -27,20 +27,30 @@ public class SceneFade : MonoBehaviour
     }
 
     private IEnumerator FadeAndLoad(string sceneName)
+{
+    fadeCanvas.blocksRaycasts = true;   // blocca click durante il fade
+    fadeCanvas.interactable = false;
+
+    float t = 0;
+    float startAlpha = fadeCanvas.alpha; // per sicurezza
+    float endAlpha = 1f;
+
+    // Fade OUT morbido → trasparente a nero
+    while (t < fadeDuration)
     {
-        float t = 0;
+        t += Time.deltaTime;
 
-        // Fade OUT → da trasparente a nero
-        while (t < fadeDuration)
-        {
-            t += Time.deltaTime;
-            fadeCanvas.alpha = Mathf.Lerp(0, 1, t / fadeDuration);
-            yield return null;
-        }
+        // SmoothStep = transizione più elegante e morbida
+        fadeCanvas.alpha = Mathf.Lerp(startAlpha, endAlpha, Mathf.SmoothStep(0, 1, t / fadeDuration));
 
-        // Carica la nuova scena
-        SceneManager.LoadScene(sceneName);
+        yield return null;
     }
+
+    fadeCanvas.alpha = 1;
+
+    SceneManager.LoadScene(sceneName);
+}
+
 
     // -------------------------
     // FADE IN (AUTOMATICO)

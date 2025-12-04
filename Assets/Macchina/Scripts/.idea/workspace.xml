@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a76c8146-f17a-4df7-a46a-725a3c19d95d" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Cone.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ConeSpawner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/DraggableNotification.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NotManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PlayerCar.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ScrollingBackground.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="35pTlwV8PdQ46v8CnXDFqCs6lCE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a76c8146-f17a-4df7-a46a-725a3c19d95d" name="Changes" comment="" />
+      <created>1763806168517</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1763806168517</updated>
+      <workItem from="1763806169883" duration="15000" />
+      <workItem from="1763806389168" duration="8000" />
+      <workItem from="1763806723878" duration="21000" />
+      <workItem from="1763806942708" duration="8000" />
+      <workItem from="1763807673716" duration="19000" />
+      <workItem from="1763807889297" duration="9000" />
+      <workItem from="1763808438201" duration="14000" />
+      <workItem from="1763808943545" duration="7000" />
+      <workItem from="1763809175278" duration="15000" />
+      <workItem from="1763809531728" duration="24000" />
+      <workItem from="1763809587251" duration="16000" />
+      <workItem from="1763809819603" duration="9000" />
+      <workItem from="1763816937157" duration="25000" />
+      <workItem from="1763816974079" duration="253000" />
+      <workItem from="1763817240610" duration="160000" />
+      <workItem from="1763817412108" duration="221000" />
+      <workItem from="1763817644587" duration="182000" />
+      <workItem from="1763817837348" duration="882000" />
+      <workItem from="1763818732535" duration="133000" />
+      <workItem from="1763818939813" duration="167000" />
+      <workItem from="1763819192594" duration="73000" />
+      <workItem from="1763819391717" duration="4000" />
+      <workItem from="1763819406345" duration="4000" />
+      <workItem from="1763819483173" duration="5000" />
+      <workItem from="1763819515901" duration="11000" />
+      <workItem from="1763819539349" duration="77000" />
+      <workItem from="1763819676325" duration="9000" />
+      <workItem from="1763819700642" duration="4000" />
+      <workItem from="1763819817216" duration="9000" />
+      <workItem from="1763819836816" duration="5000" />
+      <workItem from="1763819854531" duration="8000" />
+      <workItem from="1763819874036" duration="8000" />
+      <workItem from="1763819891175" duration="31000" />
+      <workItem from="1763819932874" duration="5000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

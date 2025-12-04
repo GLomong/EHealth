@@ -10,6 +10,8 @@ public class BridgeTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             fadeScript.FadeToScene(nextSceneName);
+            PlayerPrefs.SetString("SpawnPoint", "FromBridge");
+
         }
     }
 }
