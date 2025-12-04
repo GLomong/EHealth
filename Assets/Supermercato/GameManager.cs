@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;  // FERMA IL GIOCO
 
         if (finalScoreText != null)
-            finalScoreText.text = "FINAL SCORE\n" + score.ToString();
+            finalScoreText.text = "\n" + score.ToString();
 
         if (gameOverPanel != null)
             gameOverPanel.SetActive(true);
