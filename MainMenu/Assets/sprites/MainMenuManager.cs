@@ -6,7 +6,7 @@ public class MainMenuManager : MonoBehaviour
     // Questa funzione verrà chiamata dal bottone
     public void StartGame()
     {
-        // Carica la scena numero 1 (la prossima in lista)
+        // Carica la scena numero 1
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
