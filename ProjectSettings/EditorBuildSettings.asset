@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/menu.unity
+    guid: 3fd627b2ba5e4f24ab6909165b2a0d30
+  - enabled: 1
+    path: Assets/questionarioIniziale.unity
+    guid: a61b05013766fbf499ecc735b358f15a
+  - enabled: 1
     path: "Assets/Citt\xE0.unity"
     guid: 906bb3e17773a4bf8aad9f9846ad389a
   - enabled: 1
