@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     private AudioSource audioSource;
     private bool gameEnded = false;
 
+
     void Awake()
     {
         instance = this;
@@ -108,10 +109,11 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;  // FERMA IL GIOCO
 
         if (finalScoreText != null)
-            finalScoreText.text = "FINAL SCORE\n" + score.ToString();
+            finalScoreText.text = "\n" + score.ToString();
 
         if (gameOverPanel != null)
             gameOverPanel.SetActive(true);
     }
+    
 }
 
