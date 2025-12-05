@@ -11,6 +11,8 @@ public class NoteSpawner : MonoBehaviour
     public Sprite spriteDown;
     public Sprite spriteUp;
     public Sprite spriteRight;
+    public bool canSpawn = true;
+    public int totalNotesSpawned = 0;
 
     [Header("Timing")]
     public float travelTime = 2.0f;            // tempo che la nota impiega dallo spawn al target
@@ -21,6 +23,7 @@ public class NoteSpawner : MonoBehaviour
 
     void Update()
     {
+        if (!canSpawn) return;
         if (!musicSource) return;
 
         float songTime = musicSource.time;
@@ -35,6 +38,7 @@ public class NoteSpawner : MonoBehaviour
 
     void SpawnRandomNote(float songTime)
     {
+        totalNotesSpawned++;
         Lane lane = (Lane)Random.Range(0, 4); // lane casuale
 
         // crea entry temporanea per spawn

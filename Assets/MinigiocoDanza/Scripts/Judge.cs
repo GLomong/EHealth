@@ -16,6 +16,11 @@ public class Judge : MonoBehaviour
     public NoteSpawner spawner;
     public ScoreManager scoreManager;
 
+    [Header("Sounds")]
+    public AudioClip perfectSound;
+    public AudioClip goodSound;
+    public AudioClip missSound;
+
     // manteniamo una lista attiva per ogni lane
     private Dictionary<Lane, List<Note>> activeNotes = new Dictionary<Lane, List<Note>>();
 
@@ -65,22 +70,25 @@ public class Judge : MonoBehaviour
 
         if (diff <= perfectWindow)
         {
-            scoreManager.AddScore(100, "Perfect");
+            scoreManager.AddScore(5, "Perfect");
+            AudioSource.PlayClipAtPoint(perfectSound, Camera.main.transform.position, 0.3f); // volume leggermente più basso
             ApplyNoteHit(nearest, "Perfect");
         }
         else if (diff <= goodWindow)
         {
-            scoreManager.AddScore(50, "Good");
+            scoreManager.AddScore(3, "Good");
+            AudioSource.PlayClipAtPoint(goodSound, Camera.main.transform.position, 0.3f);
             ApplyNoteHit(nearest, "Good");
         }
         else if (diff <= lateEarlyWindow)
         {
-            scoreManager.AddScore(10, "Late/Early");
+            scoreManager.AddScore(1, "Late/Early");
             ApplyNoteHit(nearest, "Late");
         }
         else
         {
             scoreManager.RegisterMiss();
+            AudioSource.PlayClipAtPoint(missSound, Camera.main.transform.position, 0.3f);
             // ApplyNoteHit(nearest, "Miss");
         }
     }
@@ -124,7 +132,7 @@ public class Judge : MonoBehaviour
 
         // Feedback visivo e particelle
         HitFeedbackSpawner.Instance.SpawnFeedback("MISS", Color.red, n.targetPos);
-        // HitEffectSpawner.Instance.SpawnEffect("Miss", n.transform.position);
+        AudioSource.PlayClipAtPoint(missSound, Camera.main.transform.position, 0.3f);
         
         // Riduci stamina
         StaminaManager.Instance.ReduceStamina(StaminaManager.Instance.missPenalty);

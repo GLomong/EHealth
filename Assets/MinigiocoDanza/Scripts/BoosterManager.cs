@@ -9,14 +9,14 @@ public class BoosterManager : MonoBehaviour
     public float waterDuration = 15f;           // durata del booster acqua
     public float waterPitch = 0.95f;            // leggera decelerazione
     public float waterPerfectBonus = 0.03f;     // aumenta perfectWindow
-    public float waterInstantStamina = 80f;     // energia immediata (< di candy)
+    public float waterInstantStamina = 70f;     // energia immediata (< di candy)
 
     public float candyInstantStamina = 90f;      // energia immediata
-    public float candyNeutraDuration = 3f;        // periodo neutro iniziale 
-    public float candyBoostPitch = 1.25f;       // aumento velocità
+    public float candyNeutraDuration = 2f;        // periodo neutro iniziale 
+    public float candyBoostPitch = 1.5f;       // aumento velocità
     public float candyBoostDuration = 10f;       // periodo successivo più veloce
     public float candyPerfectPenalty = -0.02f;  // riduce perfectWindow (più difficile)
-    public float candyDecayIncrease = 5f;        // aumento decay durante candy
+    public float candyDecayIncrease = 3f;        // aumento decay durante candy
 
     // internals
     private bool runningWater = false;
