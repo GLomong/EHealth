@@ -99,15 +99,18 @@ public class PlayerController : MonoBehaviour
         }
 
         positions += index;
+
         if (positions > pos_max)
         {
-            positions=pos_max;
+            positions = pos_max;
         }
-        {
-            currentTarget = jumpPoints[positions];
-            isJumping = true;
-            canClick = false;
-        }
+
+        currentTarget = jumpPoints[positions];
+        isJumping = true;
+        canClick = false;
+
+        Debug.Log("StartJump chiamato, target = " + currentTarget.name);
+
     }
 
 void FallAndReset()
