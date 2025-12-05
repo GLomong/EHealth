@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     private AudioSource audioSource;
     private bool gameEnded = false;
 
+
     void Awake()
     {
         instance = this;
@@ -113,5 +114,6 @@ public class GameManager : MonoBehaviour
         if (gameOverPanel != null)
             gameOverPanel.SetActive(true);
     }
+    
 }
 

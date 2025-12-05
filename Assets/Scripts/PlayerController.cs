@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float jumpSpeed = 5f;
     public int positions = 0;      // Punto di partenza del personaggio (indice 0)
     public int pos_max = 0;
-    public bool canClick = false;
+    public bool canClick = true;
     public Transform out_target;
     public bool outComplete = false;
     public int ponte_score;
@@ -73,8 +73,9 @@ public class PlayerController : MonoBehaviour
     void MoveToEntry()
     {
         transform.position = Vector3.MoveTowards(transform.position, entryTarget.position, entrySpeed * Time.deltaTime);
-        if (Vector3.Distance(transform.position, entryTarget.position) < 0.01f)
+        if (Vector3.Distance(transform.position, entryTarget.position) < 0.2f)
             {
+                Debug.Log("arrivato ad entry target");
                 //qua si aggiungono prima le cose del dialogo se necesario
                 entryComplete = true;
                 canClick = true;

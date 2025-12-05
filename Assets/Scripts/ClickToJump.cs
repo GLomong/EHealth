@@ -6,9 +6,12 @@ public class ClickToJump : MonoBehaviour
     public int jumpValue=1;   //1,2,3 a seconda di quale bottone è premuto
 
     //debugging
-    private void OnMouseDown()
-{
-    Debug.Log("Click ricevuto su " + gameObject.name);
-}
+    public void DoJumpFromUI()
+    {
+        if (playerController != null)
+            playerController.StartJump(jumpValue);
+        
+    }
+
 }
 
