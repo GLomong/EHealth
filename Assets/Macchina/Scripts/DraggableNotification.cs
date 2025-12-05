@@ -23,18 +23,34 @@ public class DraggableNotification : MonoBehaviour, IBeginDragHandler, IDragHand
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        // salvo la posizione di partenza, così posso riportarla lì se non basta il trascinamento
+        // se il gioco è finito, non si può iniziare a trascinare
+        if (GameOverUI.gameEnded)
+            return;
+
+        // salvo la posizione di partenza
         startPosition = rectTransform.anchoredPosition;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        // se il gioco è finito, niente drag
+        if (GameOverUI.gameEnded)
+            return;
+
         // sposto la notifica seguendo il dito/mouse
         rectTransform.anchoredPosition += eventData.delta;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        // se il gioco è finito, ignoro il rilascio
+        if (GameOverUI.gameEnded)
+        {
+            // giusto per sicurezza, la riporto dov’era
+            rectTransform.anchoredPosition = startPosition;
+            return;
+        }
+
         // distanza dal centro (0,0) del canvas
         float distanceFromCenter = rectTransform.anchoredPosition.magnitude;
 

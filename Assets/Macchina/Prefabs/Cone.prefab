@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 2293123803541545565}
   - component: {fileID: 8646624932322227712}
   - component: {fileID: 7223423090265625367}
+  - component: {fileID: -2170415975870048}
   m_Layer: 0
   m_Name: Cone
-  m_TagString: Obastcle
+  m_TagString: Cono
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,3 +180,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cone
   speed: 3
+--- !u!114 &-2170415975870048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7733632754639121248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ac60b77aacb4061bce8dcb6db62b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ConeFall
+  sideDistance: 1
+  downDistance: 0.5
+  duration: 0.3
+  destroyDelay: 1

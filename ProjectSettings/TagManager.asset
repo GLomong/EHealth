@@ -8,6 +8,8 @@ TagManager:
   - PickUpZone
   - IgnoreZone
   - PickupZone
+  - Cono
+  - Cone
   layers:
   - Default
   - TransparentFX

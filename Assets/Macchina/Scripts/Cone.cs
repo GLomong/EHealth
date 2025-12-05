@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class Cone : MonoBehaviour
 {
-    public float speed = 3f; //velocità con cui il cono scende
+    public float speed = 3f; // velocità di discesa
 
-    void Update() //per far scorrere i coni verso la macchina
+    void Update()
     {
-        transform.Translate(Vector3.down * speed * Time.deltaTime); //vector muove verso il basso e deltatime per movim fluido
+        // Se il gioco è finito → NON muovere più il cono
+        if (!GameOverUI.gameEnded)
+        {
+            transform.Translate(Vector3.down * speed * Time.deltaTime);
+        }
 
-        if (transform.position.y < -7f) //cono eliminato quando esce sotto lo schermo
+        // MA continuiamo comunque a cancellare il cono se esce dallo schermo
+        if (transform.position.y < -7f)
         {
             Destroy(gameObject);
         }
     }
 }
+
