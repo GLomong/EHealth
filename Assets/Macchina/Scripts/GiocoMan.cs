@@ -18,6 +18,7 @@ public class GiocoMan : MonoBehaviour
 
     [Header("Riferimenti gioco")]
     public PlayerCar player;
+    public GameOverUI gameOverUI;   // aggiunto: collegamento al pannello finale
 
     private int score = 0;
     public bool gameOver { get; private set; } = false;
@@ -35,17 +36,20 @@ public class GiocoMan : MonoBehaviour
 
         if (scoreText != null)
         {
-            // testo iniziale
             scoreText.text = scoreLabel + score;
         }
     }
 
     void Update()
     {
+        // se il gioco globale è finito, non faccio più niente
+        if (GameOverUI.gameEnded)
+            return;
+
         if (gameOver) return;
 
-        // countdown
-        remainingTime -= Time.deltaTime;
+        // countdown (uso unscaledDeltaTime così non dipende dal timeScale)
+        remainingTime -= Time.unscaledDeltaTime;
         if (remainingTime <= 0f)
         {
             remainingTime = 0f;
@@ -64,7 +68,9 @@ public class GiocoMan : MonoBehaviour
     // chiamata quando una notifica viene spostata via
     public void AddLucidity(int amount)
     {
-        if (gameOver) return;   // se il gioco è finito, non aggiorno più
+        // se gioco notifiche o gioco globale sono finiti, non aggiungo più punti
+        if (gameOver || GameOverUI.gameEnded)
+            return;
 
         score += amount;
 
@@ -82,16 +88,19 @@ public class GiocoMan : MonoBehaviour
     void EndGame()
     {
         if (gameOver) return;
-
         gameOver = true;
 
-        // blocco la macchina
+        // blocco la macchina qui solo per sicurezza (ma lo fa già GameOverUI)
         if (player != null)
             player.canMove = false;
 
-        // ferma tutto il gioco (strada, coni, notifiche che usano deltaTime)
-        Time.timeScale = 0f;
+        // fai comparire il pannello di fine gioco UNA SOLA VOLTA
+        if (gameOverUI != null && !GameOverUI.gameEnded)
+        {
+            gameOverUI.ShowGameOver();
+        }
 
-        Debug.Log("FINE GIOCO! Punteggio: " + score);
+        Debug.Log("FINE GIOCO (notifiche)! Punteggio: " + score);
     }
 }
+

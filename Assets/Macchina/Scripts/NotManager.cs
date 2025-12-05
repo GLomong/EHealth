@@ -5,18 +5,28 @@ public class NotificationManager : MonoBehaviour
     public GameObject notificationUI;
     public PlayerCar player;
 
-    public float interval = 5f;   //ogni 5 secondi dopo che è stata chiusa
+    public float interval = 5f; // ogni 5 secondi dopo che è stata chiusa
+    private float timer = 0f;
 
-    private float timer = 0f; //contatore del tempo passato
-
-    void Start() //all’inizio nasconde la notifica
+    void Start()
     {
         if (notificationUI != null)
-            notificationUI.SetActive(false);   // parte nascosta
+            notificationUI.SetActive(false); // parte nascosta
     }
 
     void Update()
     {
+        //  Se il gioco è finito:
+        if (GameOverUI.gameEnded)
+        {
+            // se c'è ancora una notifica visibile, la spengo
+            if (notificationUI != null && notificationUI.activeSelf)
+                notificationUI.SetActive(false);
+
+            // e non faccio altro
+            return;
+        }
+
         // se la notifica è visibile, non faccio partire il timer
         if (notificationUI != null && notificationUI.activeSelf)
             return;
@@ -25,14 +35,19 @@ public class NotificationManager : MonoBehaviour
 
         if (timer >= interval)
         {
-            ShowNotification(); //riappare notifica
-            timer = 0f; //reset del timer
+            ShowNotification();   // riappare notifica
+            timer = 0f;           // reset del timer
         }
     }
 
     void ShowNotification()
     {
-        if (notificationUI == null) return;
+        // sicurezza: se il gioco è finito, non mostrare nulla
+        if (GameOverUI.gameEnded)
+            return;
+
+        if (notificationUI == null)
+            return;
 
         // la rimettiamo al centro ogni volta
         RectTransform rt = notificationUI.GetComponent<RectTransform>();
@@ -42,6 +57,8 @@ public class NotificationManager : MonoBehaviour
         notificationUI.SetActive(true);
 
         if (player != null)
-            player.canMove = false; //blocca la macchina
+            player.canMove = false; // blocca la macchina finché non la “scippi”
     }
 }
+
+

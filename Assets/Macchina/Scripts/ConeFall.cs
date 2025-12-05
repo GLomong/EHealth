@@ -7,12 +7,18 @@ public class ConeFall : MonoBehaviour
     public float destroyDelay = 0.5f;  // dopo quanto lo distrugge
 
     private bool isFalling = false;
+    private Coroutine fallRoutine;
 
     // direction: +1 = verso destra, -1 = verso sinistra
     public void Fall(float direction)
     {
+        // Se il gioco è finito → NON far partire la caduta
+        if (GameOverUI.gameEnded)
+            return;
+
         if (isFalling) return;
-        StartCoroutine(FallRoutine(direction));
+
+        fallRoutine = StartCoroutine(FallRoutine(direction));
     }
 
     private IEnumerator FallRoutine(float direction)
@@ -32,10 +38,10 @@ public class ConeFall : MonoBehaviour
         Vector3 viewportPos = cam.WorldToViewportPoint(startPos);
 
         // lo spingiamo fuori dallo schermo
-        float targetViewportX = (direction > 0) ? 1.2f : -0.2f; // un po' oltre il bordo
+        float targetViewportX = (direction > 0) ? 1.2f : -0.2f;
         viewportPos.x = targetViewportX;
 
-        // un filo più in basso, ma resta coerente con l'altezza attuale
+        // abbassiamo leggermente
         viewportPos.y = Mathf.Clamp01(viewportPos.y - 0.2f);
 
         Vector3 endPos = cam.ViewportToWorldPoint(viewportPos);
@@ -48,6 +54,13 @@ public class ConeFall : MonoBehaviour
         float t = 0f;
         while (t < duration)
         {
+            // Se il gioco finisce DURANTE la caduta → stop immediato
+            if (GameOverUI.gameEnded)
+            {
+                Destroy(gameObject);
+                yield break;
+            }
+
             float lerpT = t / duration;
             transform.position = Vector3.Lerp(startPos, endPos, lerpT);
             t += Time.deltaTime;
@@ -56,7 +69,14 @@ public class ConeFall : MonoBehaviour
 
         transform.position = endPos;
 
-        // aspetto un attimo e poi lo distruggo
+        // Se il gioco finisce qui, elimina subito il cono
+        if (GameOverUI.gameEnded)
+        {
+            Destroy(gameObject);
+            yield break;
+        }
+
+        // aspetta ancora un po' e poi distruggi
         yield return new WaitForSeconds(destroyDelay);
         Destroy(gameObject);
     }

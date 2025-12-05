@@ -21,6 +21,10 @@ public class CarCollision : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        // Se il gioco è finito, ignora tutte le collisioni
+        if (GameOverUI.gameEnded)
+            return;
+
         if (other.CompareTag("Cono"))
         {
             // tremolio macchina

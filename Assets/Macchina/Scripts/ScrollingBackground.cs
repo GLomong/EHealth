@@ -2,17 +2,27 @@ using UnityEngine;
 
 public class ScrollingBackground : MonoBehaviour
 {
-    public float scrollSpeed = 3f; //velocità dello scorrimento verso il basso
-    public float resetPositionY; //posizione Y alla quale lo sfondo è considerato troppo in basso
-    public float startPositionY; //posizione Y in cui lo sfondo deve ripartire dopo il reset
+    public float scrollSpeed = 3f;     // velocità dello scorrimento verso il basso
+    public float resetPositionY;       // Y alla quale lo sfondo viene resettato
+    public float startPositionY;       // Y di ripartenza dello sfondo dopo il reset
 
     void Update()
-    {
-        transform.Translate(Vector3.down * scrollSpeed * Time.deltaTime); //peer far "scorrere" strada sotto macchina
+    { 
+        // se il gioco è finito, lo sfondo NON si muove più
+        if (GameOverUI.gameEnded)
+            return;
 
-        if (transform.position.y <= resetPositionY) //sfondo sceso troppo in basso
+        // movimento verso il basso (strada che scorre)
+        transform.Translate(Vector3.down * scrollSpeed * Time.deltaTime);
+
+        // quando arriva troppo in basso → lo rimettiamo in alto
+        if (transform.position.y <= resetPositionY)
         {
-            transform.position = new Vector3(transform.position.x, startPositionY, transform.position.z); //sfondo spostato in alto
+            transform.position = new Vector3(
+                transform.position.x,
+                startPositionY,
+                transform.position.z
+            );
         }
     }
 }
