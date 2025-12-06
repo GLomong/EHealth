@@ -2,19 +2,24 @@ using UnityEngine;
 
 public class TestButtons : MonoBehaviour
 {
-    public void DebugX1()
+    public MovimentoPonte movimento;   // CAMPO PUBBLICO CHE DEVE APPARIRE
+
+    public void ClickX1()
     {
-        Debug.Log("Hai premuto X1!");
+        Debug.Log("Hai cliccato X1!");
+        movimento.Avanza(1);
     }
 
-    public void DebugX2()
+    public void ClickX2()
     {
-        Debug.Log("Hai premuto X2!");
+        Debug.Log("Hai cliccato X2!");
+        movimento.Avanza(2);
     }
 
-    public void DebugX3()
+    public void ClickX3()
     {
-        Debug.Log("Hai premuto X3!");
+        Debug.Log("Hai cliccato X3!");
+        movimento.Avanza(3);
     }
 }
 
