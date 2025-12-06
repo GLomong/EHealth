@@ -10,7 +10,11 @@ public class ClickToJump : MonoBehaviour
     {
         if (playerController != null)
             playerController.StartJump(jumpValue);
-        
+        Debug.Log("BOTTONE PREMUTO - PC = " + playerController);
+        Debug.Log("BOTTONE: jumpValue = " + jumpValue);
+        Debug.Log("BOTTONE: canClick = " + playerController.canClick);
+
+
     }
 
 }
