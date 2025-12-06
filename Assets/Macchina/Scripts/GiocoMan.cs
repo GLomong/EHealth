@@ -94,7 +94,7 @@ public class GiocoMan : MonoBehaviour
         if (gameOver) return;
         gameOver = true;
 
-        // blocco la macchina qui solo per sicurezza (ma lo fa già GameOverUI)
+        // blocco la macchina qui solo per sicurezza 
         if (player != null)
             player.canMove = false;
 
