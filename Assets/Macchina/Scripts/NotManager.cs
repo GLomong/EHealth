@@ -16,6 +16,9 @@ public class NotificationManager : MonoBehaviour
 
     void Update()
     {
+        if (!StartScreen.gameStarted)
+            return;
+
         //  Se il gioco è finito:
         if (GameOverUI.gameEnded)
         {

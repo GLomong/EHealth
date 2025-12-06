@@ -8,8 +8,8 @@ public class ScrollingBackground : MonoBehaviour
 
     void Update()
     { 
-        // se il gioco è finito, lo sfondo NON si muove più
-        if (GameOverUI.gameEnded)
+        // se il gioco non è iniziato o è finito, la strada non si muove
+        if (!StartScreen.gameStarted || GameOverUI.gameEnded)
             return;
 
         // movimento verso il basso (strada che scorre)
