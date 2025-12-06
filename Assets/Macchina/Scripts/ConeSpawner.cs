@@ -17,6 +17,9 @@ public class ConeSpawner : MonoBehaviour
         // Finché il gioco NON è finito, spawna coni
         while (!GameOverUI.gameEnded)
         {
+             if (!StartScreen.gameStarted) 
+            yield return null;
+
             yield return new WaitForSeconds(spawnInterval);
             
             // può succedere che il gioco finisca DURANTE la wait

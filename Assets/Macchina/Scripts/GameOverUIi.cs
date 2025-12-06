@@ -1,10 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameOverUI : MonoBehaviour
 {
     public static bool gameEnded = false;   
+    public CarCollision carCollision;     // per leggere i coni colpiti
+    public GiocoMan giocoMan;             // per leggere le notifiche swippate
 
+    [Header("Testi punteggio finale")]
+    public TMP_Text conesResultText;
+    public TMP_Text swipedResultText;
     public GameObject gameOverPanel;
     public PlayerCar playerCar;
 
@@ -20,20 +26,24 @@ public class GameOverUI : MonoBehaviour
     }
 
     public void ShowGameOver()
-    {
-        // segnale globale che il gioco è finito
-        gameEnded = true;
+{
+    gameEnded = true;
 
-        if (gameOverPanel != null)
-            gameOverPanel.SetActive(true);
+    // aggiorna i testi di punteggio prima di mostrare il pannello
+    if (conesResultText != null && carCollision != null)
+        conesResultText.text = "Cones hit: " + carCollision.conesHit;
 
-        // blocca la macchina
-        if (playerCar != null)
-            playerCar.canMove = false;
+    if (swipedResultText != null && giocoMan != null)
+        swipedResultText.text = giocoMan.scoreLabel + giocoMan.score;
 
-        // blocca tutto il gioco (animazioni, spawn, movimento, timer)
-        Time.timeScale = 0f;
-    }
+    if (gameOverPanel != null)
+        gameOverPanel.SetActive(true);
+
+    if (playerCar != null)
+        playerCar.canMove = false;
+
+    Time.timeScale = 0f;
+}
 
     public void OnBackToCityPressed()
     {

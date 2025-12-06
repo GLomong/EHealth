@@ -20,7 +20,7 @@ public class GiocoMan : MonoBehaviour
     public PlayerCar player;
     public GameOverUI gameOverUI;   // aggiunto: collegamento al pannello finale
 
-    private int score = 0;
+    public int score = 0;
     public bool gameOver { get; private set; } = false;
 
     void Start()
@@ -42,6 +42,10 @@ public class GiocoMan : MonoBehaviour
 
     void Update()
     {
+
+        if (!StartScreen.gameStarted)
+            return;
+
         // se il gioco globale è finito, non faccio più niente
         if (GameOverUI.gameEnded)
             return;
@@ -90,7 +94,7 @@ public class GiocoMan : MonoBehaviour
         if (gameOver) return;
         gameOver = true;
 
-        // blocco la macchina qui solo per sicurezza (ma lo fa già GameOverUI)
+        // blocco la macchina qui solo per sicurezza 
         if (player != null)
             player.canMove = false;
 
