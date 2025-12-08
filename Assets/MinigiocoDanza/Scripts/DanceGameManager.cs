@@ -8,7 +8,10 @@ public class DanceGameManager : MonoBehaviour
     public AudioSource musicSource; 
     public ScoreManager scoreManager;
     public NoteSpawner noteSpawner;
+    public int finalScore = 0; //punteggio finale grezzo
     public int finalGradePoints = 0; //punteggio finale su max 50 
+    public GameObject gameOverPanel; // pannello finale
+    public TMPro.TextMeshProUGUI finalScoreText;        
 
     private bool gameActive = true;
 
@@ -17,6 +20,10 @@ public class DanceGameManager : MonoBehaviour
         timer = gameDuration;
         if (musicSource != null)
             musicSource.Play();
+
+        // Nascondi il pannello finale all'inizio
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(false);
     }
 
     void Update()
@@ -33,7 +40,10 @@ public class DanceGameManager : MonoBehaviour
 
     void EndGame()
     {
+        if (!gameActive) return;
         gameActive = false;
+
+        Time.timeScale = 0f;  // FERMA IL GIOCO
 
         // Stop musica
         if (musicSource != null)
@@ -47,19 +57,20 @@ public class DanceGameManager : MonoBehaviour
         // Calcolo punteggio finale (proporzione con 50 punti massimi)
         if (scoreManager != null)
         {
-            int finalScore = scoreManager.score;
+            finalScore = scoreManager.score;
             int totalNotes = noteSpawner.totalNotesSpawned;
             int maxScore = totalNotes * 5; // punteggio per il perfect = 5 punti per nota
             float scorePercentage = (float)finalScore / (float)maxScore; 
             finalGradePoints = Mathf.RoundToInt(scorePercentage * 50);
-            Debug.Log($"Game over. Punteggio Finale: {finalGradePoints} punti su 50");
+            // Debug.Log($"Game over. Punteggio Finale: {finalGradePoints} punti su 50");
         }
 
-        // Debug.Log("GAME OVER — Tempo scaduto");
+        if (finalScoreText != null)
+            finalScoreText.text = "\n" + finalScore.ToString();     // mostra il punteggio finale (quello che appare sullo schermo, non convertito in 50 punti massimo)
 
-        // Qui possisamo mettere un pannello di fine partita
-        // UIManager.Instance.ShowGameOver();
-        // qua mostrerei il punteggio che compare già a schermo durante il gioco
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(true);
+
     }
 }
 
