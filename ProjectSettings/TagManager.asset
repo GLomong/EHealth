@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - Cart
+  - PickUpZone
+  - IgnoreZone
+  - PickupZone
+  - Cono
+  - Cone
   layers:
   - Default
   - TransparentFX

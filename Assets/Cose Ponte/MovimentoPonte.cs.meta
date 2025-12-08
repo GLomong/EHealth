@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 34aeb4b982a8340478d8e1b8b42c918c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - attentionUIPrefab: {fileID: 5566937436109001541, guid: c6b6518e0218c4d49a3ac2417633c6f7, type: 3}
+  - suonoRottura: {instanceID: 0}
+  - puntoUscita: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
