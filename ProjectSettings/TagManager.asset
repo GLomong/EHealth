@@ -56,8 +56,11 @@ TagManager:
   - name: Layer 1
     uniqueID: 2425651459
     locked: 0
-  - name: Layer 2
+  - name: Player
     uniqueID: 4250941897
+    locked: 0
+  - name: Decor
+    uniqueID: 2647458379
     locked: 0
   m_RenderingLayers:
   - Default
