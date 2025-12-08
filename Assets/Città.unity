@@ -656,6 +656,37 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1.5}
   m_EdgeRadius: 0
+--- !u!1 &281257902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 281257903}
+  m_Layer: 0
+  m_Name: RagazzoPositionPostCar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &281257903
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281257902}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.83, y: 4.08, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &315670914
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,6 +770,37 @@ PolygonCollider2D:
       - {x: -13.17153, y: -8.9601965}
       - {x: 10.006745, y: -9.055085}
   m_UseDelaunayMesh: 0
+--- !u!1 &341830707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 341830708}
+  m_Layer: 0
+  m_Name: RagazzoPositionPostMarket
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &341830708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341830707}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.03, y: -6.52, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &457890955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,8 +1092,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce6e0f4eb889f451698eecd17f0b4c24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  fadeScript: {fileID: 62356297}
-  nextSceneName: Mappa2
 --- !u!61 &909441535
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1487,6 +1547,7 @@ GameObject:
   - component: {fileID: 1114728390}
   - component: {fileID: 1114728389}
   - component: {fileID: 1114728388}
+  - component: {fileID: 1114728393}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -1647,13 +1708,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1114728387}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -1, w: -0.000038339524}
+  m_LocalRotation: {x: -0, y: 0, z: -1, w: -0.00003482915}
   m_LocalPosition: {x: 0.21, y: 4.15, z: 0}
   m_LocalScale: {x: 0.28339458, y: 0.3226508, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180.004}
+--- !u!114 &1114728393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114728387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b998176249145afa33232cd5f7b271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  finalPosition: {fileID: 2103380156}
+  speed: 3
+  player: {fileID: 256272012}
+  playerSpawnPosition: {fileID: 281257903}
 --- !u!1 &1227503127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1807,6 +1884,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1519573826}
   - component: {fileID: 1519573825}
+  - component: {fileID: 1519573827}
   m_Layer: 0
   m_Name: ReturnCity
   m_TagString: Untagged
@@ -1841,6 +1919,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1519573827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519573824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1408c929606fa4a4eaf87595016db2aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMarketToCity
+  spawnFromMarket: {fileID: 341830708}
+  player: {fileID: 256272012}
 --- !u!1 &1908504766
 GameObject:
   m_ObjectHideFlags: 0
@@ -5851,6 +5943,37 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &2103380155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2103380156}
+  m_Layer: 0
+  m_Name: CarFinalposition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2103380156
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103380155}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0326, y: 4.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -5868,3 +5991,6 @@ SceneRoots:
   - {fileID: 1036929333}
   - {fileID: 1114728392}
   - {fileID: 1519573826}
+  - {fileID: 2103380156}
+  - {fileID: 281257903}
+  - {fileID: 341830708}

@@ -51,8 +51,11 @@ public class GameOverUI : MonoBehaviour
         gameEnded = false;
         Time.timeScale = 1f;
 
-        // cambia il nome con la tua scena vera
-        SceneManager.LoadScene("CityScene");
+        // 🔵 PASSO 1: Segna che torni dal minigioco
+        PlayerPrefs.SetInt("ReturnFromCarMinigame", 1);
+
+        // 🔵 PASSO 2: Torna alla città
+        SceneManager.LoadScene("Città");
     }
 }
 

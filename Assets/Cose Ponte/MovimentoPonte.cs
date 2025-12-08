@@ -25,8 +25,7 @@ public class MovimentoPonte : MonoBehaviour
     private Vector3 targetPos;
 
     [Header("UI Caduta")]
-    public GameObject asseRottaUIPrefab;
-    public GameObject attentionUIPrefab;
+    public GameObject attentionUIPrefab;   // <-- TENIAMO SOLO ATTENTION
     public float attentionDuration = 2f;
 
     [Header("Suono")]
@@ -113,7 +112,7 @@ public class MovimentoPonte : MonoBehaviour
         if (indexCorrente >= punti.Length)
             indexCorrente = punti.Length - 1;
 
-        // FINE PONTE
+        // USCITA FINALE
         if (indexCorrente == punti.Length - 1)
         {
             StartCoroutine(UscitaFinale());
@@ -132,7 +131,7 @@ public class MovimentoPonte : MonoBehaviour
     }
 
     // ---------------------------------------------------------
-    // CADUTA
+    // CADUTA (Senza Asse Rotta)
     // ---------------------------------------------------------
     IEnumerator Caduta()
     {
@@ -140,23 +139,26 @@ public class MovimentoPonte : MonoBehaviour
 
         GameManagerBridge.instance.PenalitaCaduta();
 
-        float durataUI = attentionDuration;
-
-        if (asseRottaUIPrefab != null)
-        {
-            GameObject uiAsse = Instantiate(asseRottaUIPrefab, GameObject.Find("Canvas").transform);
-            Destroy(uiAsse, durataUI);
-        }
-
+        // ATTENTION UI
         if (attentionUIPrefab != null)
         {
             GameObject uiAtt = Instantiate(attentionUIPrefab, GameObject.Find("Canvas").transform);
-            Destroy(uiAtt, durataUI);
+
+            RectTransform rt = uiAtt.GetComponent<RectTransform>();
+            rt.anchorMin = new Vector2(0.5f, 0.5f);
+            rt.anchorMax = new Vector2(0.5f, 0.5f);
+            rt.pivot = new Vector2(0.5f, 0.5f);
+            rt.anchoredPosition = Vector2.zero;
+            rt.localScale = Vector3.one;
+
+            Destroy(uiAtt, attentionDuration);
         }
 
+        // SUONO
         if (suonoRottura != null)
             AudioSource.PlayClipAtPoint(suonoRottura, Camera.main.transform.position, 1f);
 
+        // ANIMAZIONE CADUTA
         Vector3 cadutaPos = transform.position + new Vector3(0, -1f, 0);
 
         float t = 0;
@@ -185,7 +187,7 @@ public class MovimentoPonte : MonoBehaviour
 
         Debug.Log("🏁 Fine ponte → uscita!");
 
-        GameObject.Find("ButtonsManager").SetActive(false);
+        //GameObject.Find("ButtonsManager").SetActive(false);
 
         GameManagerBridge.instance.StopTimer();
         GameManagerBridge.instance.StopScore();
@@ -206,7 +208,9 @@ public class MovimentoPonte : MonoBehaviour
 
         staMuovendo = false;
 
-        Debug.Log("🎉 Personaggio uscito! Puoi attivare il pannello WIN.");
+        GameManagerBridge.instance.MostraSchermataFinale();
+
+        //Debug.Log("🎉 Personaggio uscito!");
     }
 }
 

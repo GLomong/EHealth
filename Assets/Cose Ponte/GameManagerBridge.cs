@@ -16,11 +16,12 @@ public class GameManagerBridge : MonoBehaviour
     public int bonusX3 = 10;
     public int penalitaCaduta = 20;
 
-    private float timer = 0f;
+    public float timer = 0f;
 
     // Stati
     private bool timerAttivo = false;
     public bool scoreActive = true;
+    public EndGameUI endGameUI;
 
     void Awake()
     {
@@ -81,5 +82,10 @@ public class GameManagerBridge : MonoBehaviour
     {
         scoreText.text = "SCORE: " + score;
     }
+    public void MostraSchermataFinale()
+    {
+        endGameUI.MostraFineGioco(score, timer);
+    }
+
 }
 

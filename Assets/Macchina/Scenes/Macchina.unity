@@ -2013,7 +2013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e451fab131a294cc3a009bc6a7a3dc7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameTimer
-  timeRemaining: 60
+  timeRemaining: 5
   timerText: {fileID: 1740204037}
   gameOverUI: {fileID: 1537431914}
 --- !u!4 &1023526581

@@ -1,18 +1,21 @@
 using UnityEngine;
 
-public class BridgeTrigger : MonoBehaviour
+public class EnterBridge : MonoBehaviour
 {
-    public SceneFade fadeScript;
-    public string nextSceneName;
+    private SceneFade sceneFade;
+
+    private void Start()
+    {
+        sceneFade = FindObjectOfType<SceneFade>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            fadeScript.FadeToScene(nextSceneName);
-            PlayerPrefs.SetString("SpawnPoint", "FromBridge");
-
+            sceneFade.FadeToScene("Ponte");
         }
     }
 }
+
 
