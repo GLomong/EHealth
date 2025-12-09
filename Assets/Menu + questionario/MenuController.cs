@@ -6,7 +6,7 @@ public class MenuController : MonoBehaviour
 
     public void StartGame()
     {
-        fade.FadeToScene("questionarioIniziale");
+        fade.FadeToScene("Questionario");
     }
 
 }
