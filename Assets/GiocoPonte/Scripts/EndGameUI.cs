@@ -18,6 +18,9 @@ public class EndGameUI : MonoBehaviour
 
     public void VaiAllaProssimaScena(string nomeScena)
     {
+        // diciamo alla scena successiva che arrivi dalla fine gioco
+        PlayerPrefs.SetInt("ReturnFromBridge", 1);
+
         SceneManager.LoadScene(nomeScena);
     }
 }

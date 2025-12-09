@@ -71,6 +71,8 @@ public class LaptopManager : MonoBehaviour
         {
             Debug.Log("Tutte le risposte date! Avvio il gioco...");
             
+            // Resetto i giorni 
+            TotalGameManager.Instance.ResetAllProgress();
             // CARICA IL LIVELLO SUCCESSIVO
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }

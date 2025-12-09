@@ -113,7 +113,17 @@ public class GameManager : MonoBehaviour
 
         if (gameOverPanel != null)
             gameOverPanel.SetActive(true);
+        
+        SaveScoreForDay();
     }
     
+    private void SaveScoreForDay()
+    {
+        // Salva il punteggio finale del giorno corrente in PlayerPrefs
+        int currentDay = TotalGameManager.Instance.CurrentDay;
+        PlayerPrefs.SetInt($"Day{currentDay}_MarketScore", score);
+        PlayerPrefs.Save();
+        Debug.Log($"[MarketGameManager] Salvato Day {currentDay} Score = {score}");
+    }
 }
 

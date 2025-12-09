@@ -288,8 +288,9 @@ MonoBehaviour:
   fineGiornoPanel: {fileID: 1961907699}
   endDayText: {fileID: 1433408032}
   speed: 5
-  displayTime: 3
   nextSceneName: "Citt\xE0"
+  finalSceneName: Finale
+  totalDays: 3
 --- !u!61 &215362524
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4753,6 +4754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneSpawnManager
   spawnFromBridge: {fileID: 152653856}
+  player: {fileID: 947813962}
 --- !u!4 &1919822964
 Transform:
   m_ObjectHideFlags: 0
@@ -4804,8 +4806,9 @@ MonoBehaviour:
   fineGiornoPanel: {fileID: 0}
   endDayText: {fileID: 0}
   speed: 5
-  displayTime: 0.1
   nextSceneName: "Citt\xE0"
+  finalSceneName: Finale
+  totalDays: 3
 --- !u!114 &1961907701
 MonoBehaviour:
   m_ObjectHideFlags: 0

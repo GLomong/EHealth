@@ -85,7 +85,16 @@ public class GameManagerBridge : MonoBehaviour
     public void MostraSchermataFinale()
     {
         endGameUI.MostraFineGioco(score, timer);
+        SaveScoreForDay();
     }
 
+    private void SaveScoreForDay()
+    {
+        // Salva il punteggio finale del giorno corrente in PlayerPrefs
+        int currentDay = TotalGameManager.Instance.CurrentDay;
+        PlayerPrefs.SetInt($"Day{currentDay}_BridgeScore", score);
+        PlayerPrefs.Save();
+        Debug.Log($"[BridgeGameManager] Salvato Day {currentDay} Score = {score}");
+    }
 }
 

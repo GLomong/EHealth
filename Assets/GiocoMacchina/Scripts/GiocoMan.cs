@@ -105,6 +105,15 @@ public class GiocoMan : MonoBehaviour
         }
 
         Debug.Log("FINE GIOCO (notifiche)! Punteggio: " + score);
+        SaveScoreForDay();
+    }
+
+    private void SaveScoreForDay()
+    {
+        // Salva il punteggio finale del giorno corrente in PlayerPrefs
+        int currentDay = TotalGameManager.Instance.CurrentDay;
+        PlayerPrefs.SetInt($"Day{currentDay}_CarScore", score);
+        PlayerPrefs.Save();
+        Debug.Log($"[CarGameManager] Salvato Day {currentDay} Score = {score}");
     }
 }
-

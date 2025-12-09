@@ -72,7 +72,7 @@ public class ScoreManager : MonoBehaviour
         scoreText.transform.localScale = originalScale;
         scoreText.color = originalColor;
 
-        // FASE 1: Pop-in scale animation (ingrandisce → torna normale)
+        // FASE 1: Pop-in scale animation
         float t = 0;
         while (t < 1)
         {

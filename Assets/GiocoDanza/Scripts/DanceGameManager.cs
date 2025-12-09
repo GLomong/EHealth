@@ -71,6 +71,16 @@ public class DanceGameManager : MonoBehaviour
         if (gameOverPanel != null)
             gameOverPanel.SetActive(true);
 
+        SaveScoreForDay();
+    }
+
+    private void SaveScoreForDay()
+    {
+        // Salva il punteggio finale del giorno corrente in PlayerPrefs
+        int currentDay = TotalGameManager.Instance.CurrentDay;
+        PlayerPrefs.SetInt($"Day{currentDay}_DanceScore", finalGradePoints);
+        PlayerPrefs.Save();
+        Debug.Log($"[DanceGameManager] Salvato Day {currentDay} Score = {finalGradePoints}");
     }
 }
 
