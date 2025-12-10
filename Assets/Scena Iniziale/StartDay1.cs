@@ -3,7 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class StartDay1 : MonoBehaviour
 {
-    public string nextSceneName = "Città"; // <-- cambia col nome vero della scena città
+    // Script che permette se si schiaccia il bottone 'StartTheDay' di fare la transizione da questa scena alla scena della città
+    public string nextSceneName = "Città"; 
 
     public void GoToCity()
     {

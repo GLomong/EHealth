@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class LaptopManager : MonoBehaviour
 {
     [Header("--- PANNELLI ---")]
-    public GameObject boxIstruzioni;
-    public GameObject gruppoLogin;
-    public GameObject pannelloIntroduzione;   // <-- il tuo RecuperoPassword
-    public GameObject gruppoDomande;
+    public GameObject boxIstruzioni;    //Pannello iniziale di beneveuto e istruzioni per il login successivo
+    public GameObject gruppoLogin;      //Login dove inserire nome utente e password
+    public GameObject pannelloIntroduzione;   //Pannello tra il login e le domande del questionario dove si dice che le domande successive servono per il recupero della password
+    public GameObject gruppoDomande;    //Domande per il recupero della passowrd, tratte dal questinario 
 
     [Header("--- INPUT LOGIN ---")]
     public TMP_InputField campoNome;
@@ -20,17 +20,17 @@ public class LaptopManager : MonoBehaviour
         boxIstruzioni.SetActive(true);
         gruppoLogin.SetActive(true);
 
-        pannelloIntroduzione.SetActive(false);  // IMPORTANTE
-        gruppoDomande.SetActive(false);         // IMPORTANTE
+        pannelloIntroduzione.SetActive(false);  //Setto falso perchè all'inizio non si devono vedere
+        gruppoDomande.SetActive(false);         
     }
 
-    // 1️⃣ Bottone "OK" nelle istruzioni
+    // 1️⃣ Bottone "OK" nelle istruzioni iniziali, premendo ok il box istruzioni si spegne e si apre la schermata login
     public void ChiudiIstruzioni()
     {
         boxIstruzioni.SetActive(false);
     }
 
-    // 2️⃣ Bottone "OK" nel login
+    // 2️⃣ Bottone "OK" nel login, una volta premuto o si apre il pannello per il recupero password
     public void ConfermaLogin()
     {
         if (campoNome.text != "" && campoPassword.text != "")
@@ -46,7 +46,7 @@ public class LaptopManager : MonoBehaviour
         }
     }
 
-    // 3️⃣ Bottone CONTINUE nell'introduzione
+    // 3️⃣ Bottone CONTINUE nell'introduzione: una volta premuto il bottone 'continue' iniziano le domande del questionario:
     public void ContinuaAlleDomande()
     {
         pannelloIntroduzione.SetActive(false);
