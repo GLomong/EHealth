@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a666285909a294b43b167e0cbaac401f, type: 3}
-  m_Name: CashierDialogue
+  m_Name: GentlementDialogue
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
-  npcName: Cashier
+  npcName: Gentlemen
   dialogueLines:
-  - Welcome to the supermarket!
-  - There is a 3x2 offer on wine today!
+  - Why go slow? Big steps mean big wins!
+  - "Slow and steady keeps you safe\u2026 but you won\u2019t win that way!"
   autoProgressLines: 0100
   autoProgressDelay: 1.5
   typingSpeed: 0.05
   hasChoices: 1
   choices:
-  - choiceText: "No thanks, I\u2019m trying to drink less"
+  - choiceText: no bro
     score: 2
-  - choiceText: "I\u2019ll think about it\u2026 maybe later"
+  - choiceText: yes
     score: 1
-  - choiceText: "Sounds great, I\u2019ll take some!"
+  - choiceText: okay
     score: 0

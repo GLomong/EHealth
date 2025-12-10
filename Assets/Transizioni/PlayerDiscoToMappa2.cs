@@ -7,7 +7,7 @@ public class PlayerDiscoToMappa2 : MonoBehaviour
 
     void Start()
     {
-        // controlla se arriva dal Market
+        // controlla se arriva dalla disco
         if (PlayerPrefs.GetInt("ReturnFromDisco", 0) == 1)
         {
             PlayerPrefs.SetInt("ReturnFromDisco", 0); // reset

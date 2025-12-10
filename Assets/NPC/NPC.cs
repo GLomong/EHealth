@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class NPC : MonoBehaviour, IInteractable
 {
-    public NPCDialogue dialogueData;
-    public GameObject dialoguePanel;
+    public NPCDialogue dialogueData;    public GameObject dialoguePanel;
     public TMP_Text dialogueText;
     public TMP_Text nameText;
-
+    public GameObject ChoicePanel;
+    
     private bool isDialogueActive = false;
     private int dialogueIndex = 0;
     private bool isTyping = false;
@@ -60,12 +60,29 @@ public class NPC : MonoBehaviour, IInteractable
         {
             StartCoroutine(TypeLine());
         }
-        // Altrimenti → fine dialogo
+        // 🔥 ARRIVATI ALLA FINE DEL DIALOGO
         else
         {
-            EndDialogue();
+            // Se ci sono scelte → mostriamo la UI delle scelte
+            if (dialogueData.hasChoices)
+            {
+                DialogueChoiceUI.Instance.ShowChoices(dialogueData.choices);
+                
+                // far comparire il pannello delle scelte, indipendenti (3 bottoni indipendenti: 2, 1, 0)
+
+                // Importante: il dialogo non deve andare avanti
+                isDialogueActive = false;
+            }
+            else
+            {
+                EndDialogue();
+            }
         }
     }
+    
+    // comparire scelte
+    // disattivare NPC
+
     
     IEnumerator TypeLine()
     {
@@ -93,6 +110,15 @@ public class NPC : MonoBehaviour, IInteractable
     {
         isDialogueActive = false;
         dialoguePanel.SetActive(false);
+        
+        if (ChoicePanel != null)
+        ChoicePanel.SetActive(true);
+        
+        this.enabled = false;
+        
+        // disattivare che posso riparlare con NPC
+        
     }
 }
+
 

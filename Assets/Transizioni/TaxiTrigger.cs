@@ -35,21 +35,25 @@ public class TaxiTrigger : MonoBehaviour
 
     private IEnumerator MoveTaxiOut()
     {
+        // Calcolo il punteggio totale del giorno e lo salvo 
+        SaveScoreForDay();
+        int dayScore = PlayerPrefs.GetInt($"Day{TotalGameManager.Instance.CurrentDay}_TotalScore", 0);
+
         // 1. Prepara pannello e testo
         CanvasGroup cg = fineGiornoPanel.GetComponent<CanvasGroup>();
         cg.alpha = 0f; // Assicura che il pannello sia trasparente all'inizio
         fineGiornoPanel.SetActive(true);
 
-        float endAlpha = 0.6f;
-        float fadeInDuration = 1f;
         Color textColor = endDayText.color;
         textColor.a = 0f;
         endDayText.color = textColor;
-        endDayText.text = "End of Day 1";
+        endDayText.text = "End of Day " + TotalGameManager.Instance.CurrentDay + "\nScore: " + dayScore;
+
+        float timer = 0f;
+        float endAlpha = 0.6f;
+        float fadeInDuration = 1f;
 
         // 2. Il taxi si muove verso destra finché non esce e si avvia il fade in del pannello
-        float timer = 0f;
-
         while (transform.position.x < 23f)
         {
             // Movimento del taxi
@@ -117,7 +121,38 @@ public class TaxiTrigger : MonoBehaviour
         textColor.a = 0f;
         endDayText.color = textColor;
 
-        // 5. Carica la scena successiva
-        SceneManager.LoadScene(nextSceneName);
+        // 6. Carica la scena successiva in base al giorno corrente
+        TotalGameManager.Instance.EndDayAndProceed(nextSceneName);
+    }
+
+    // Calcolo punteggio alla fine di ogni giorno
+    private void SaveScoreForDay()
+    {
+        int currentDay = TotalGameManager.Instance.CurrentDay;
+
+        // Legge i punteggi dei minigiochi 
+        int marketScore = PlayerPrefs.GetInt($"Day{currentDay}_MarketScore", 0);
+        int carScore = PlayerPrefs.GetInt($"Day{currentDay}_CarScore", 0);
+        int bridgeScore = PlayerPrefs.GetInt($"Day{currentDay}_BridgeScore", 0);
+        int danceScore = PlayerPrefs.GetInt($"Day{currentDay}_DanceScore", 0);
+
+        // Qui potremmo leggere i punteggi dei dialoghi 
+
+    
+        // Applica dei pesi ai punteggi dei minigiochi (da vedere con personalisation)
+        float marketWeight = 0.25f;
+        float carWeight = 0.25f;
+        float bridgeWeight = 0.25f;
+        float danceWeight = 0.25f;
+
+        // Calcola il punteggio totale ponderato
+        float totalScore = (marketScore * marketWeight) +
+                           (carScore * carWeight) +
+                           (bridgeScore * bridgeWeight) +
+                           (danceScore * danceWeight);
+
+        // Salva il punteggio totale del giorno corrente in PlayerPrefs
+        PlayerPrefs.SetInt($"Day{currentDay}_TotalScore", Mathf.RoundToInt(totalScore));
+        PlayerPrefs.Save();
     }
 }
