@@ -10,20 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a666285909a294b43b167e0cbaac401f, type: 3}
-  m_Name: InfluencerDialogue
+  m_Name: FriendDialogue
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
   npcName: Influencer
   dialogueLines:
-  - "Bro, have you seen today\u2019s viral challenge?"
-  - You have to check your phone right now!
+  - "Come on! Everyone\u2019s trying it."
+  - "Don\u2019t be the boring one."
   autoProgressLines: 0100
   autoProgressDelay: 1.5
   typingSpeed: 0.05
   hasChoices: 1
-  choices:
-  - choiceText: no bro
-    score: 2
-  - choiceText: yes
-    score: 1
-  - choiceText: okay
-    score: 0
+  choices: []
