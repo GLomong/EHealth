@@ -1048,7 +1048,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 8.980774, y: 172.72}
+  m_AnchoredPosition: {x: 8.980713, y: 172.71997}
   m_SizeDelta: {x: -1379.48, y: -799.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &485862902
@@ -5838,7 +5838,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 8.975403, y: 183.07251}
+  m_AnchoredPosition: {x: 8.975342, y: 183.07251}
   m_SizeDelta: {x: -945.67, y: -573.855}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2097213745
@@ -6195,7 +6195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 8.9776, y: 183.07}
+  m_AnchoredPosition: {x: 8.977539, y: 183.07007}
   m_SizeDelta: {x: -945.67, y: -573.86}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2145410709
@@ -6249,83 +6249,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestionController
   domande:
-  - 'How often do you have a drink containing alcohol? '
-  - 'How often during the last year have you found that you were not able to stop
-    drinking once you had started? '
-  - 'Have you used drugs other than those required for medical reasons? '
-  - 'Does your spouse (or parents) ever complain about your involvement with drugs? '
-  - 'Have you felt that you might have a problem with gambling? '
-  - 'Have you bet more than you could really afford to lose? '
-  - "How often do you find yourself saying \u201Cjust a few more minutes\u201D when
-    online? "
-  - 'How often does your job performance or productivity suffer because of the Internet? '
-  risposteA:
-  - Never
-  - Never
-  - No
-  - No
-  - Never
-  - Never
-  - Never
-  - Never
-  risposteB:
-  - Monthly or less
-  - Monthly or less
-  - Yes
-  - Yes
-  - Sometimes
-  - Sometimes
-  - Rarely
-  - Rarely
-  risposteC:
-  - 2-4 times a month
-  - 2-4 times a month
-  - 
-  - 
-  - 'Most of the time '
-  - 'Most of the time '
-  - Sometimes
-  - Sometimes
-  risposteD:
-  - 2-3 times a week
-  - 2-3 times a week
-  - 
-  - 
-  - Almost always
-  - Almost always
-  - Often
-  - Often
-  risposteE:
-  - 4 or more times a week
-  - 4 or more times a week
-  - 
-  - 
-  - 
-  - 
-  - Very often
-  - Very often
-  risposteF:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - Always
-  - Always
+  - testo: 'How often do you have a drink containing alcohol? '
+    risposte:
+    - Never
+    - Monthly or less
+    - 2-4 times a month
+    - '2-3 times a week '
+    - 4 or more times a week
+  - testo: 'How often during the last year have you found that you were not able
+      to stop drinking once you had started? '
+    risposte:
+    - Never
+    - Monthly or less
+    - 2-4 times a month
+    - '2-3 times a week '
+    - 4 or more times a week
+  - testo: 'Have you used drugs other than those required for medical reasons? '
+    risposte:
+    - Yes
+    - No
+  - testo: 'Does your spouse (or parents) ever complain about your involvement with
+      drugs? '
+    risposte:
+    - Yes
+    - No
+  - testo: 'Have you felt that you might have a problem with gambling? '
+    risposte:
+    - Never
+    - Sometimes
+    - Most of the time
+    - Almost always
+  - testo: 'Have you bet more than you could really afford to lose? '
+    risposte:
+    - Never
+    - Sometimes
+    - Most of the time
+    - Almost always
+  - testo: "How often do you find yourself saying \u201Cjust a few more minutes\u201D
+      when online? "
+    risposte:
+    - Never
+    - Rarely
+    - Sometimes
+    - Often
+    - Very often
+    - Always
+  - testo: 'How often does your job performance or productivity suffer because of
+      the Internet? '
+    risposte:
+    - Never
+    - Rarely
+    - Sometimes
+    - Often
+    - Very often
+    - Always
   textDomanda: {fileID: 1880938815}
-  textA: {fileID: 91926687}
-  textB: {fileID: 870645179}
-  textC: {fileID: 761191285}
-  textD: {fileID: 910345966}
-  textE: {fileID: 1419643974}
-  textF: {fileID: 1410788152}
-  toggleA: {fileID: 1448548928}
-  toggleB: {fileID: 498145718}
-  toggleC: {fileID: 1289101164}
-  toggleD: {fileID: 1929803604}
-  toggleE: {fileID: 1937995301}
-  toggleF: {fileID: 1178345939}
+  textRisposte:
+  - {fileID: 91926687}
+  - {fileID: 870645179}
+  - {fileID: 761191285}
+  - {fileID: 910345966}
+  - {fileID: 1419643974}
+  - {fileID: 1410788152}
+  toggles:
+  - {fileID: 1448548928}
+  - {fileID: 498145718}
+  - {fileID: 1289101164}
+  - {fileID: 1929803604}
+  - {fileID: 1937995301}
+  - {fileID: 1178345939}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

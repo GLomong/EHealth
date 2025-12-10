@@ -1,72 +1,70 @@
-using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement; // <-- AGGIUNGI QUESTO
-
-public class QuestionController : MonoBehaviour
-{
-    public string[] domande;
-
-    public string[] risposteA;
-    public string[] risposteB;
-    public string[] risposteC;
-    public string[] risposteD;
-    public string[] risposteE;
-    public string[] risposteF;
-
-    public TMP_Text textDomanda;
-    public TMP_Text textA;
-    public TMP_Text textB;
-    public TMP_Text textC;
-    public TMP_Text textD;
-    public TMP_Text textE;
-    public TMP_Text textF;
-
-
-    public Toggle toggleA;
-    public Toggle toggleB;
-    public Toggle toggleC;
-    public Toggle toggleD;
-    public Toggle toggleE;
-    public Toggle toggleF;
-
-    private int index = 0;
-
-    void Start()
-    {
-        MostraDomanda();
-    }
-
-    public void Next()
-    {
-        index++;
-
-        // 🔥 QUANDO FINISCE IL QUESTIONARIO → CARICA LA NUOVA SCENA
-        if (index >= domande.Length)
-        {
-            SceneManager.LoadScene("InizioGiornata1"); 
-            return;
-        }
-
-        MostraDomanda();
-    }
-
-    void MostraDomanda()
-    {
-        textDomanda.text = domande[index];
-        textA.text = risposteA[index];
-        textB.text = risposteB[index];
-        textC.text = risposteC[index];
-        textD.text = risposteD[index];
-        textE.text = risposteE[index];
-        textF.text = risposteF[index];
-
-        toggleA.isOn = false;
-        toggleB.isOn = false;
-        toggleC.isOn = false;
-        toggleD.isOn = false;
-        toggleE.isOn = false;
-        toggleF.isOn = false;
-    }
-
-}
+ using UnityEngine;
+ using TMPro;
+ using UnityEngine.UI;
+ using UnityEngine.SceneManagement;
+ 
+ [System.Serializable]
+ public class Domanda
+ {
+     public string testo;
+     public string[] risposte;   // Numero variabile: 2, 3, 4, 5, 6…
+ }
+ 
+ public class QuestionController : MonoBehaviour
+ {
+     public Domanda[] domande;
+ 
+     public TMP_Text textDomanda;
+ 
+     // Array di testi per le risposte (TextA, TextB, TextC, ...)
+     public TMP_Text[] textRisposte;
+ 
+     // Array di toggle (ToggleA, ToggleB, ToggleC, ...)
+     public Toggle[] toggles;
+ 
+     private int index = 0;
+ 
+     void Start()
+     {
+         MostraDomanda();
+     }
+ 
+     public void Next()
+     {
+         index++;
+ 
+         // SE FINISCE IL QUESTIONARIO → VAI ALLA SCENA SUCCESSIVA
+         if (index >= domande.Length)
+         {
+             SceneManager.LoadScene("InizioGiornata1");
+             return;
+         }
+ 
+         MostraDomanda();
+     }
+ 
+     void MostraDomanda()
+     {
+         Domanda d = domande[index];
+ 
+         // TESTO DOMANDA
+         textDomanda.text = d.testo;
+ 
+         // 1️⃣ NASCONDI TUTTI I TOGGLE E TESTI
+         for (int i = 0; i < toggles.Length; i++)
+         {
+             toggles[i].gameObject.SetActive(false);
+             textRisposte[i].gameObject.SetActive(false);
+             toggles[i].isOn = false;
+         }
+ 
+         // 2️⃣ ATTIVA SOLO QUELLI CHE SERVONO
+         for (int i = 0; i < d.risposte.Length; i++)
+         {
+             toggles[i].gameObject.SetActive(true);
+             textRisposte[i].gameObject.SetActive(true);
+ 
+             textRisposte[i].text = d.risposte[i];
+         }
+     }
+ }
