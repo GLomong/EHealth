@@ -2041,7 +2041,7 @@ MonoBehaviour:
   scoreText: {fileID: 1278626428}
   positiveSfx: {fileID: 8300000, guid: d18a72499ba58dd40a0e379085d24c94, type: 3}
   negativeSfx: {fileID: 8300000, guid: c6b596fd07a14a64b89285b6f079b167, type: 3}
-  gameDuration: 3
+  gameDuration: 40
   gameOverPanel: {fileID: 1074563494}
   finalScoreText: {fileID: 1493752908}
   instructionPanel: {fileID: 43756416}
@@ -2680,8 +2680,8 @@ MonoBehaviour:
   spawnInterval: 1
   minX: -3.5
   maxX: 3.5
-  alcoholStartProbability: 0.2
-  alcoholEndProbability: 0.2
+  alcoholStartProbability: 0.15
+  alcoholEndProbability: 0.4
 --- !u!4 &1499508217
 Transform:
   m_ObjectHideFlags: 0

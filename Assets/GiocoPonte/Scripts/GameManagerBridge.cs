@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 
+//Script per gestire tutto il gioco: punteggi, tempo, caduta...
 public class GameManagerBridge : MonoBehaviour
 {
     public static GameManagerBridge instance;
@@ -18,7 +19,7 @@ public class GameManagerBridge : MonoBehaviour
 
     public float timer = 0f;
 
-    // Stati
+    // Inizializzo tempo e score
     private bool timerAttivo = false;
     public bool scoreActive = true;
     public EndGameUI endGameUI;

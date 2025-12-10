@@ -1,8 +1,9 @@
 using UnityEngine;
 
+//Script per vedere se funzionano i bottoni quando clicco:
 public class TestButtons : MonoBehaviour
 {
-    public MovimentoPonte movimento;   // CAMPO PUBBLICO CHE DEVE APPARIRE
+    public MovimentoPonte movimento;   
 
     public void ClickX1()
     {

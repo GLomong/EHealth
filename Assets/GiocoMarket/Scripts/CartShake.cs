@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+//Script per far muovere il carrello quando prende oggetti alcol! Gli fa fare una piccola rotazione e poi torna di nuovo dritto
 public class CartShake : MonoBehaviour
 {
     public void Shake(float duration, float angle)

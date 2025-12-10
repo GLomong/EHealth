@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//Script per muovere il carrello a destra e a sinistra
 public class CartController : MonoBehaviour
 {
     public float speed = 5f;

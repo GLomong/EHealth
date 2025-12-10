@@ -25,7 +25,7 @@ public class MovimentoPonte : MonoBehaviour
     private Vector3 targetPos;
 
     [Header("UI Caduta")]
-    public GameObject attentionUIPrefab;   // <-- TENIAMO SOLO ATTENTION
+    public GameObject attentionUIPrefab;
     public float attentionDuration = 2f;
 
     [Header("Suono")]
@@ -36,9 +36,16 @@ public class MovimentoPonte : MonoBehaviour
     public float speedUscita = 3f;
     private bool uscitaIniziata = false;
 
+    
+    [Header("Avvio Manuale")]
+    public bool avvioConsentito = false;
+
+
     void Start()
     {
-        StartCoroutine(EntrataInScena());
+       // Siccome ho inserito il pannello istruzioni non faccio partire la scena subito ppea schiaccio play ma aspetto che venga schiacciato il bottone 'start'
+        // StartCoroutine(EntrataInScena());
+        
     }
 
     void Update()
@@ -61,9 +68,18 @@ public class MovimentoPonte : MonoBehaviour
         }
     }
 
-    // ---------------------------------------------------------
-    // ENTRATA
-    // ---------------------------------------------------------
+    // Funzione per far avviare il gioco solo quando viene schiacciato il bottone 'start' del pannello istruzioni
+    public void AvviaGioco()
+    {
+        if (!avvioConsentito)
+        {
+            avvioConsentito = true;
+            StartCoroutine(EntrataInScena());
+        }
+    }
+
+    //Quando schiaccio start il pannello scompare, c'è l'entrata automatica del personaggio alla scena del ponte e parte poi timer punteggi e i tasti vengono
+    //abilitati per giocare
     IEnumerator EntrataInScena()
     {
         targetPos = punti[0].position;
@@ -77,9 +93,7 @@ public class MovimentoPonte : MonoBehaviour
         GameManagerBridge.instance.StartTimer();
     }
 
-    // ---------------------------------------------------------
-    // AVANZA
-    // ---------------------------------------------------------
+    // Faccio avanzare il personaggio in base a quante assi sceglie di saltare alla volta:
     public void Avanza(int quantiAssi)
     {
         if (!ingressoFinito || staMuovendo || inCooldown) return;
@@ -112,7 +126,6 @@ public class MovimentoPonte : MonoBehaviour
         if (indexCorrente >= punti.Length)
             indexCorrente = punti.Length - 1;
 
-        // USCITA FINALE
         if (indexCorrente == punti.Length - 1)
         {
             StartCoroutine(UscitaFinale());
@@ -130,16 +143,13 @@ public class MovimentoPonte : MonoBehaviour
         inCooldown = false;
     }
 
-    // ---------------------------------------------------------
-    // CADUTA (Senza Asse Rotta)
-    // ---------------------------------------------------------
+    // Se il personaggio cade esce una scritta in alto con 'Oh no, try again'
     IEnumerator Caduta()
     {
         Debug.Log("💀 CADUTO!");
 
         GameManagerBridge.instance.PenalitaCaduta();
 
-        // ATTENTION UI
         if (attentionUIPrefab != null)
         {
             GameObject uiAtt = Instantiate(attentionUIPrefab, GameObject.Find("Canvas").transform);
@@ -154,11 +164,9 @@ public class MovimentoPonte : MonoBehaviour
             Destroy(uiAtt, attentionDuration);
         }
 
-        // SUONO
         if (suonoRottura != null)
             AudioSource.PlayClipAtPoint(suonoRottura, Camera.main.transform.position, 1f);
 
-        // ANIMAZIONE CADUTA
         Vector3 cadutaPos = transform.position + new Vector3(0, -1f, 0);
 
         float t = 0;
@@ -177,17 +185,13 @@ public class MovimentoPonte : MonoBehaviour
         staMuovendo = false;
     }
 
-    // ---------------------------------------------------------
-    // USCITA FINALE
-    // ---------------------------------------------------------
+    // Quando il personaggio raggiunge il punto di uscita, automaticamente esce di scena e compare la schermata finale con time e score finali dell'utente.
     IEnumerator UscitaFinale()
     {
         if (uscitaIniziata) yield break;
         uscitaIniziata = true;
 
         Debug.Log("🏁 Fine ponte → uscita!");
-
-        //GameObject.Find("ButtonsManager").SetActive(false);
 
         GameManagerBridge.instance.StopTimer();
         GameManagerBridge.instance.StopScore();
@@ -209,10 +213,7 @@ public class MovimentoPonte : MonoBehaviour
         staMuovendo = false;
 
         GameManagerBridge.instance.MostraSchermataFinale();
-
-        //Debug.Log("🎉 Personaggio uscito!");
     }
 }
-
 
 

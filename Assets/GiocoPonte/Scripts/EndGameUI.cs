@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
+// Questo script serve per far vedere il pannello finale con score e tempo finali e per passare alla scena successiva quando schiaccio il bottone 'BackTocity'
 public class EndGameUI : MonoBehaviour
 {
     public GameObject panelFine;
@@ -16,6 +17,7 @@ public class EndGameUI : MonoBehaviour
         finalTimeText.text = "TIME: " + time.ToString("F2");
     }
 
+    //Campo dove inserire il nome della scena successiva:
     public void VaiAllaProssimaScena(string nomeScena)
     {
         // diciamo alla scena successiva che arrivi dalla fine gioco

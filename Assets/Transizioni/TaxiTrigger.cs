@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Script per la scena finale: il personaggio prende il taxi che lo porta fuori scena e comincia la giornata 2 (o 3) nuovamente dalla città
 public class TaxiTrigger : MonoBehaviour
 {
     public GameObject player;              // Riferimento al ragazzo
@@ -18,7 +19,7 @@ public class TaxiTrigger : MonoBehaviour
         {
             activated = true;
 
-            // 1. Nasconde il ragazzo
+            // 1. Nasconde il ragazzo quando tocca il taxi come se fosse salito sulla macchina
             player.SetActive(false);
 
             // 2. Attiva la camera per seguire il taxi
@@ -39,7 +40,7 @@ public class TaxiTrigger : MonoBehaviour
         SaveScoreForDay();
         int dayScore = PlayerPrefs.GetInt($"Day{TotalGameManager.Instance.CurrentDay}_TotalScore", 0);
 
-        // 1. Prepara pannello e testo
+        // 1. Preparo pannello e testo
         CanvasGroup cg = fineGiornoPanel.GetComponent<CanvasGroup>();
         cg.alpha = 0f; // Assicura che il pannello sia trasparente all'inizio
         fineGiornoPanel.SetActive(true);

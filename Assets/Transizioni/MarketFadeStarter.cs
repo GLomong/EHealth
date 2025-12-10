@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//Dissolvenza per entrare al market
 public class MarketFadeStarter : MonoBehaviour
 {
     public SceneFade sceneFade;     // riferimento al FadePanel

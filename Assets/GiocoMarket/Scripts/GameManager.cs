@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+//Script per gestire tutto il gioco: score, tempo, barra dello score, audio, pannello istruzioni e pannello finale...
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -15,8 +16,8 @@ public class GameManager : MonoBehaviour
     public TMP_Text scoreText;
 
     [Header("SFX")]
-    public AudioClip positiveSfx;
-    public AudioClip negativeSfx;
+    public AudioClip positiveSfx;       //Audio positivo
+    public AudioClip negativeSfx;       //Audio negativo
 
     [Header("Game Timer")]
     public float gameDuration = 40f;                 // durata totale del gioco
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
     public GameObject instructionPanel;              // pannello iniziale con START
     public bool isGameStarted = false;               // blocca tutto finché non parte
 
-    private AudioSource audioSource;
+    private AudioSource audioSource;                 //Audio quando prendi gli oggetti
     private bool gameEnded = false;
 
 
@@ -41,20 +42,18 @@ public class GameManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         UpdateUI();
 
-        // FERMA IL GIOCO ALL'INIZIO
+        // Il gioco parte fermo
         Time.timeScale = 0f;
 
         if (instructionPanel != null)
             instructionPanel.SetActive(true);
 
-        // Nascondi il pannello finale all'inizio
+        // Nascondo il pannello finale all'inizio
         if (gameOverPanel != null)
             gameOverPanel.SetActive(false);
     }
 
-    // ===========================================
-    //                START GAME
-    // ===========================================
+    // Faccio iniziare il gioco quando dal pannello istruzioni schiaccio 'start', a quel punto il pannello istruzioni scompare e il gioco si attiva:
     public void StartGame()
     {
         isGameStarted = true;
@@ -62,11 +61,12 @@ public class GameManager : MonoBehaviour
         if (instructionPanel != null)
             instructionPanel.SetActive(false);
 
-        Time.timeScale = 1f;  // RIATTIVA IL GIOCO
+        Time.timeScale = 1f;  // Parte il tempo -> a scalare
 
         StartCoroutine(GameTimer());
     }
 
+    //Aggiorno il punteggio
     public void AddScore(int amount)
     {
         if (gameEnded || !isGameStarted) return;
@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
         UpdateUI();
     }
 
+    //Aggiorno la barra in base al punteggio
     void UpdateUI()
     {
         scoreFillBar.fillAmount = (float)score / maxScore;
@@ -89,24 +90,20 @@ public class GameManager : MonoBehaviour
         audioSource.PlayOneShot(negativeSfx);
 
 
-    // ===========================================
-    //                GAME TIMER
-    // ===========================================
+    // Il gioco finisce quando finisce il tempo
     private System.Collections.IEnumerator GameTimer()
     {
         yield return new WaitForSeconds(gameDuration);
         EndGame();
     }
 
-    // ===========================================
-    //                GAME OVER
-    // ===========================================
+    // a questo punto blocco il gioco e mostro il pannello con lo score finale e il bottone per tornare alla città
     private void EndGame()
     {
         if (gameEnded) return;
         gameEnded = true;
 
-        Time.timeScale = 0f;  // FERMA IL GIOCO
+        Time.timeScale = 0f;  // Fermo il gioco
 
         if (finalScoreText != null)
             finalScoreText.text = "\n" + score.ToString();
