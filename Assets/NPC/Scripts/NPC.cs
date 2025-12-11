@@ -13,16 +13,21 @@ public class NPC : MonoBehaviour, IInteractable
     private bool isDialogueActive = false;
     private int dialogueIndex = 0;
     private bool isTyping = false;
+    private bool hasSpoken = false;
+
 
     // Permette al sistema di sapere se puoi parlare
     public bool CanInteract()
     {
-        return true;
+        // return true;
+        return !hasSpoken;
     }
 
     public void Interact()
     {
-        
+        if (hasSpoken)
+            return;
+
         // Se il dialogo è già in corso → passa alla prossima linea
         if (isDialogueActive)
         {
@@ -108,6 +113,8 @@ public class NPC : MonoBehaviour, IInteractable
 
     public void EndDialogue()
     {
+        hasSpoken = true;
+
         isDialogueActive = false;
         dialoguePanel.SetActive(false);
         
