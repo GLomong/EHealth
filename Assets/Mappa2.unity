@@ -7360,6 +7360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PunteggiScelte
   ChoicePanel: {fileID: 1966217384}
+  npcName: Friend
 --- !u!114 &1966217387
 MonoBehaviour:
   m_ObjectHideFlags: 0

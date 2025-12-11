@@ -67,16 +67,19 @@ public class TotalGameManager : MonoBehaviour
         return PlayerPrefs.GetInt($"Day{day}_{miniGameName}", 0);
     }
 
-    // Esempio di metodo per calcolare la somma totale del gioco
+    // Calcolare la somma totale del gioco
     public int GetTotalGameScore()
     {
         int total = 0;
+        int minigiochi = 0;
+        int dialoghi = 0;
         for (int day = 1; day <= totalDays; day++)
         {
             // Somma risultati dei vari giorni 
-            total += PlayerPrefs.GetInt($"Day{day}_TotalScore", 0);
+            minigiochi += PlayerPrefs.GetInt($"Day{day}_TotalScore", 0);
+            dialoghi += PlayerPrefs.GetInt($"Day{day}_DialoguesScore", 0);
         }
-
+        total = minigiochi + dialoghi;
         return total;
     }
 
@@ -86,7 +89,7 @@ public class TotalGameManager : MonoBehaviour
         CurrentDay = 1;
         PlayerPrefs.SetInt(PlayerPrefsCurrentDayKey, 1);
 
-        // Cancella tutti i punteggi
+        // Cancella tutti i punteggi (minigiochi e dialoghi)
         for (int day = 1; day <= totalDays; day++)
         {
             PlayerPrefs.DeleteKey($"Day{day}_TotalScore");
@@ -94,6 +97,10 @@ public class TotalGameManager : MonoBehaviour
             PlayerPrefs.DeleteKey($"Day{day}_CarScore");
             PlayerPrefs.DeleteKey($"Day{day}_BridgeScore");
             PlayerPrefs.DeleteKey($"Day{day}_DanceScore");
+            PlayerPrefs.DeleteKey($"Day{day}_CashierScore");
+            PlayerPrefs.DeleteKey($"Day{day}_InfluencerScore");
+            PlayerPrefs.DeleteKey($"Day{day}_GentlemenScore");
+            PlayerPrefs.DeleteKey($"Day{day}_FriendScore");
         }
 
         PlayerPrefs.Save();

@@ -137,8 +137,11 @@ public class TaxiTrigger : MonoBehaviour
         int bridgeScore = PlayerPrefs.GetInt($"Day{currentDay}_BridgeScore", 0);
         int danceScore = PlayerPrefs.GetInt($"Day{currentDay}_DanceScore", 0);
 
-        // Qui potremmo leggere i punteggi dei dialoghi 
-
+        // Legge i punteggi dei dialoghi 
+        int cashierScore = PlayerPrefs.GetInt($"Day{currentDay}_CashierScore", 0);
+        int influencerScore = PlayerPrefs.GetInt($"Day{currentDay}_InfluencerScore", 0);
+        int gentlemenScore = PlayerPrefs.GetInt($"Day{currentDay}_GentlemenScore", 0);
+        int friendScore = PlayerPrefs.GetInt($"Day{currentDay}_FriendScore", 0); 
     
         // Applica dei pesi ai punteggi dei minigiochi (da vedere con personalisation)
         float marketWeight = 0.25f;
@@ -146,14 +149,24 @@ public class TaxiTrigger : MonoBehaviour
         float bridgeWeight = 0.25f;
         float danceWeight = 0.25f;
 
-        // Calcola il punteggio totale ponderato
+        // Calcola il punteggio totale ponderato dei minigiochi
         float totalScore = (marketScore * marketWeight) +
                            (carScore * carWeight) +
                            (bridgeScore * bridgeWeight) +
                            (danceScore * danceWeight);
+        
+        // Calcolo il punteggio totale dei dialoghi 
+        float dialoghiScore = (cashierScore * marketWeight) + 
+                                (influencerScore * carWeight) +
+                                (gentlemenScore * bridgeWeight) +
+                                (friendScore * danceWeight);
 
-        // Salva il punteggio totale del giorno corrente in PlayerPrefs
+        // Salva il punteggio totale (dei minigiochi) del giorno corrente in PlayerPrefs
         PlayerPrefs.SetInt($"Day{currentDay}_TotalScore", Mathf.RoundToInt(totalScore));
+        PlayerPrefs.Save();
+
+        // Salva il punteggio totale dei dialoghi del giorno corrente in PlayerPrefs
+        PlayerPrefs.SetInt($"Day{currentDay}_DialoguesScore", Mathf.RoundToInt(dialoghiScore));
         PlayerPrefs.Save();
     }
 }
