@@ -17,6 +17,14 @@ public class CarExitTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Contollo che non esista già un punteggio del giorno corrente 
+        int currentDay = TotalGameManager.Instance.CurrentDay;
+        string scoreKey = $"Day{currentDay}_CarScore";
+        if (PlayerPrefs.HasKey(scoreKey))
+        {
+            Debug.Log($"[CarExitTrigger] Punteggio per il giorno {currentDay} già esistente: {PlayerPrefs.GetInt(scoreKey)}");
+            return;
+        }
         if (!isActivated && collision.CompareTag("Player"))
         {
             isActivated = true;
