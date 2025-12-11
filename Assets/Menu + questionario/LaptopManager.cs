@@ -24,13 +24,13 @@ public class LaptopManager : MonoBehaviour
         gruppoDomande.SetActive(false);         
     }
 
-    // 1️⃣ Bottone "OK" nelle istruzioni iniziali, premendo ok il box istruzioni si spegne e si apre la schermata login
+    // Bottone "OK" nelle istruzioni iniziali, premendo ok il box istruzioni si spegne e si apre la schermata login
     public void ChiudiIstruzioni()
     {
         boxIstruzioni.SetActive(false);
     }
 
-    // 2️⃣ Bottone "OK" nel login, una volta premuto o si apre il pannello per il recupero password
+    // Bottone "OK" nel login, una volta premuto si apre il pannello di introduzione
     public void ConfermaLogin()
     {
         if (campoNome.text != "" && campoPassword.text != "")
@@ -46,7 +46,7 @@ public class LaptopManager : MonoBehaviour
         }
     }
 
-    // 3️⃣ Bottone CONTINUE nell'introduzione: una volta premuto il bottone 'continue' iniziano le domande del questionario:
+    // Bottone CONTINUE nell'introduzione: una volta premuto il bottone 'continue' iniziano le domande del questionario:
     public void ContinuaAlleDomande()
     {
         pannelloIntroduzione.SetActive(false);
