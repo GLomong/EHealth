@@ -2164,6 +2164,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1093973987}
     m_Modifications:
+    - target: {fileID: 2111205732534351081, guid: 6c5c076b9e240433baacf267923f305b, type: 3}
+      propertyPath: npcName
+      value: Influencer
+      objectReference: {fileID: 0}
     - target: {fileID: 2594672320959166781, guid: 6c5c076b9e240433baacf267923f305b, type: 3}
       propertyPath: m_text
       value: No thanks, I'm trying to stay offline.
@@ -9684,6 +9688,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1093973987}
     m_Modifications:
+    - target: {fileID: 2111205732534351081, guid: 6c5c076b9e240433baacf267923f305b, type: 3}
+      propertyPath: npcName
+      value: Gentlemen
+      objectReference: {fileID: 0}
     - target: {fileID: 2594672320959166781, guid: 6c5c076b9e240433baacf267923f305b, type: 3}
       propertyPath: m_text
       value: Safety matters more to me.
@@ -9849,6 +9857,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1093973987}
     m_Modifications:
+    - target: {fileID: 2111205732534351081, guid: 6c5c076b9e240433baacf267923f305b, type: 3}
+      propertyPath: npcName
+      value: Cashier
+      objectReference: {fileID: 0}
     - target: {fileID: 2594672320959166781, guid: 6c5c076b9e240433baacf267923f305b, type: 3}
       propertyPath: m_fontSize
       value: 25
@@ -9984,6 +9996,26 @@ PrefabInstance:
     - target: {fileID: 5169335685291094040, guid: 6c5c076b9e240433baacf267923f305b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5589230622340325484, guid: 6c5c076b9e240433baacf267923f305b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5589230622340325484, guid: 6c5c076b9e240433baacf267923f305b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5589230622340325484, guid: 6c5c076b9e240433baacf267923f305b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 278076241}
+    - target: {fileID: 5589230622340325484, guid: 6c5c076b9e240433baacf267923f305b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5589230622340325484, guid: 6c5c076b9e240433baacf267923f305b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PunteggiScelte, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6652367111120661555, guid: 6c5c076b9e240433baacf267923f305b, type: 3}
       propertyPath: m_fontSize
