@@ -97,8 +97,8 @@ public class MovimentoPonte : MonoBehaviour
     public void Avanza(int quantiAssi)
     {
         if (!ingressoFinito || staMuovendo || inCooldown) return;
-
-        GameManagerBridge.instance.AggiungiPunti(quantiAssi);
+        
+        // Prima controllo se cade, se non cade aggiungo punti, se cade tolgo la penalità caduta
 
         if (quantiAssi == 1)
         {
@@ -121,7 +121,9 @@ public class MovimentoPonte : MonoBehaviour
             StartCoroutine(Caduta());
             return;
         }
-
+        
+        GameManagerBridge.instance.AggiungiPunti(quantiAssi);
+        
         indexCorrente += quantiAssi;
         if (indexCorrente >= punti.Length)
             indexCorrente = punti.Length - 1;
@@ -147,6 +149,7 @@ public class MovimentoPonte : MonoBehaviour
     IEnumerator Caduta()
     {
         Debug.Log("💀 CADUTO!");
+        Debug.Log("ScoreActive = " + GameManagerBridge.instance.scoreActive + " | Score prima = " + GameManagerBridge.instance.score);
 
         GameManagerBridge.instance.PenalitaCaduta();
 

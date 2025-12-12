@@ -11,8 +11,14 @@ public class PhoneIntroFade : MonoBehaviour
     public float delay = 2f;          // secondi prima del fade alla scena col telefono
     public float fadeDuration = 1.5f; // durata fade dissolvenza
 
+    public AudioSource audioSource;   //  AudioSource collegato
+    public AudioClip phoneRingClip;   //  Clip della suoneria
     IEnumerator Start()
     {
+        // Riproduci il suono all'inizio
+        if (audioSource != null && phoneRingClip != null)
+            audioSource.PlayOneShot(phoneRingClip);
+        
         // Aspetta qualche secondo prima di iniziare la dissolvenza
         yield return new WaitForSeconds(delay);
 
