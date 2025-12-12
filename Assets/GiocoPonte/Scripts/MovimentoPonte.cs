@@ -44,7 +44,7 @@ public class MovimentoPonte : MonoBehaviour
     void Start()
     {
        // Adatta probabilità caduta in base al cluster
-        int cluster = PlayerPrefs.GetInt("UserCluster", 1); // default 1
+        int cluster = PlayerPrefs.GetInt("ClusterUtente", 1); // default 1
         switch(cluster)
         {
             case 1: // LUCA (gambling 0/27)

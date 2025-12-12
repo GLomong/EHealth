@@ -24,7 +24,7 @@ public class NoteSpawner : MonoBehaviour
     void Start()
     {
         // ricavo il cluster dell'utente 
-        int cluster = PlayerPrefs.GetInt("UserCluster", 1);
+        int cluster = PlayerPrefs.GetInt("ClusterUtente", 1);
 
         // regolo l'autoSpawnInterval in base al cluster (cluster salvati da 1 a 4)
         switch (cluster)

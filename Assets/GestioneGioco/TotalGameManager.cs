@@ -87,6 +87,8 @@ public class TotalGameManager : MonoBehaviour
         CurrentDay = 1;
         PlayerPrefs.SetInt(PlayerPrefsCurrentDayKey, 1);
 
+        // Cancella cluster utente
+        PlayerPrefs.DeleteKey("ClusterUtente");
         // Cancella tutti i punteggi (minigiochi e dialoghi)
         for (int day = 1; day <= totalDays; day++)
         {
@@ -99,6 +101,7 @@ public class TotalGameManager : MonoBehaviour
             PlayerPrefs.DeleteKey($"Day{day}_InfluencerScore");
             PlayerPrefs.DeleteKey($"Day{day}_GentlemenScore");
             PlayerPrefs.DeleteKey($"Day{day}_FriendScore");
+            PlayerPrefs.DeleteKey($"Day{day}_DialoguesScore");
         }
 
         PlayerPrefs.Save();

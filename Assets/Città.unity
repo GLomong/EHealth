@@ -3086,6 +3086,8 @@ MonoBehaviour:
   dialogueText: {fileID: 1948831372}
   nameText: {fileID: 1737731386}
   ChoicePanel: {fileID: 780641774}
+  npcName: Gentlemen
+  hasScore: 1
 --- !u!61 &917643446
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3514,6 +3516,8 @@ MonoBehaviour:
   dialogueText: {fileID: 904732187}
   nameText: {fileID: 31115838}
   ChoicePanel: {fileID: 1966547323}
+  npcName: Influencer
+  hasScore: 1
 --- !u!61 &1079584212
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4608,6 +4612,8 @@ MonoBehaviour:
   dialogueText: {fileID: 1210643962}
   nameText: {fileID: 1321856880}
   ChoicePanel: {fileID: 278076241}
+  npcName: Cashier
+  hasScore: 1
 --- !u!1 &1301793053
 GameObject:
   m_ObjectHideFlags: 0
@@ -4644,6 +4650,8 @@ MonoBehaviour:
   dialogueText: {fileID: 1759238031}
   nameText: {fileID: 1184423922}
   ChoicePanel: {fileID: 0}
+  npcName: OldMan
+  hasScore: 0
 --- !u!61 &1301793055
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6171,6 +6179,8 @@ MonoBehaviour:
   dialogueText: {fileID: 1856558720}
   nameText: {fileID: 2033360124}
   ChoicePanel: {fileID: 0}
+  npcName: Kid
+  hasScore: 0
 --- !u!61 &1834572808
 BoxCollider2D:
   m_ObjectHideFlags: 0

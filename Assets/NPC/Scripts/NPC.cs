@@ -9,25 +9,28 @@ public class NPC : MonoBehaviour, IInteractable
     public TMP_Text dialogueText;
     public TMP_Text nameText;
     public GameObject ChoicePanel;
+
+    [Header("NPC Settings")]
+    public string npcName; // Cashier, Influencer, Gentlemen, Friend, ...
+    public bool hasScore = true; // false per NPC senza scelte
     
     private bool isDialogueActive = false;
     private int dialogueIndex = 0;
     private bool isTyping = false;
-    private bool hasSpoken = false;
+    private bool waitingForChoice = false;
 
 
     // Permette al sistema di sapere se puoi parlare
     public bool CanInteract()
     {
-        // return true;
-        return !hasSpoken;
+        if (waitingForChoice)
+            return false;
+            
+        return !PlayerPrefs.HasKey(GetDailyKey());
     }
 
     public void Interact()
     {
-        if (hasSpoken)
-            return;
-
         // Se il dialogo è già in corso → passa alla prossima linea
         if (isDialogueActive)
         {
@@ -65,16 +68,15 @@ public class NPC : MonoBehaviour, IInteractable
         {
             StartCoroutine(TypeLine());
         }
-        // 🔥 ARRIVATI ALLA FINE DEL DIALOGO
+        // ARRIVATI ALLA FINE DEL DIALOGO
         else
         {
             // Se ci sono scelte → mostriamo la UI delle scelte
             if (dialogueData.hasChoices)
             {
-                DialogueChoiceUI.Instance.ShowChoices(dialogueData.choices);
-                
+                waitingForChoice = true;
                 // far comparire il pannello delle scelte, indipendenti (3 bottoni indipendenti: 2, 1, 0)
-
+                DialogueChoiceUI.Instance.ShowChoices(dialogueData.choices);
                 // Importante: il dialogo non deve andare avanti
                 isDialogueActive = false;
             }
@@ -113,18 +115,28 @@ public class NPC : MonoBehaviour, IInteractable
 
     public void EndDialogue()
     {
-        hasSpoken = true;
-
         isDialogueActive = false;
         dialoguePanel.SetActive(false);
         
+        // Segna come parlato oggi SOLO se non ha punteggio
+        if (!hasScore)
+        {
+            PlayerPrefs.SetInt(GetDailyKey(), 1);
+            PlayerPrefs.Save();
+        }
+
         if (ChoicePanel != null)
-        ChoicePanel.SetActive(true);
-        
-        this.enabled = false;
-        
-        // disattivare che posso riparlare con NPC
-        
+            ChoicePanel.SetActive(true);
+    }
+
+    string GetDailyKey()
+    {
+        int day = TotalGameManager.Instance.CurrentDay;
+
+        if (hasScore)
+            return $"Day{day}_{npcName}Score";
+        else
+            return $"Day{day}_{npcName}_Spoken";
     }
 }
 
