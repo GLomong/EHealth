@@ -711,6 +711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConeSpawner
   conePrefab: {fileID: 7733632754639121248, guid: 24a385086984b47988aeec16e8f3bf05, type: 3}
+  giocoMan: {fileID: 712636823}
   spawnInterval: 5
   minX: -2.5
   maxX: 2.5
@@ -1819,7 +1820,11 @@ MonoBehaviour:
   maxLucidity: 20
   player: {fileID: 46051299}
   gameOverUI: {fileID: 0}
+  carCollision: {fileID: 0}
   score: 0
+  totalNotificationsSpawned: 0
+  totalSpawnedCones: 0
+  score_coni: 0
 --- !u!4 &712636824
 Transform:
   m_ObjectHideFlags: 0

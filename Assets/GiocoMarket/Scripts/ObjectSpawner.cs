@@ -7,7 +7,7 @@ public class ObjectSpawner : MonoBehaviour
     public GameObject[] essentialItems;
     public GameObject[] alcoholItems;
 
-    //Definisco ogni quanto coglio che scenda un oggetto
+    //Definisco ogni quanto voglio che scenda un oggetto
     public float spawnInterval = 0.8f;
     public float minX = -3.5f;
     public float maxX = 3.5f;
@@ -21,6 +21,42 @@ public class ObjectSpawner : MonoBehaviour
 
     float timer;
     
+    void Start()
+    {
+        // ricavo il cluster dell'utente 
+        int cluster = PlayerPrefs.GetInt("UserCluster", 1);
+
+        // regolo lo spawnInterval in base al cluster (cluster salvati da 1 a 4)
+        switch (cluster)
+        {
+            case 1: // LUCA (alcol 3/40)
+                // spawn oggetti normale 
+                spawnInterval = 0.8f;
+                alcoholStartProbability = 0.10f;
+                alcoholEndProbability = 0.30f;
+                break;
+            case 2: // PIETRO (alcol 10/40)
+                // spawn oggetti velocizzato
+                spawnInterval = 1.0f;
+                alcoholStartProbability = 0.10f;
+                alcoholEndProbability = 0.40f;
+                break;
+            case 3: // FRANCESCO (alcol 2/40)
+                // spawn oggetti normale
+                spawnInterval = 0.8f;
+                alcoholStartProbability = 0.10f;
+                alcoholEndProbability = 0.30f;
+                break;
+            case 4: // ELENA (alcol 26.5/40)
+                // spawn oggetti velocizzato
+                spawnInterval = 1.2f;
+                alcoholStartProbability = 0.30f;
+                alcoholEndProbability = 0.60f;
+                break;
+        }
+        Debug.Log($"Cluster {cluster} → alcoholStartProbability={alcoholStartProbability}, alcoholEndProbability={alcoholEndProbability}, spawnInterval={spawnInterval}");
+    }
+
     void Update()
     {
         if (!GameManager.instance.isGameStarted)
