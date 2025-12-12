@@ -10,6 +10,37 @@ public class NotificationManager : MonoBehaviour
 
     void Start()
     {
+        // ricavo il cluster dell'utente 
+        int cluster = PlayerPrefs.GetInt("UserCluster", 1);
+
+        // regolo l'autoSpawnInterval in base al cluster (cluster salvati da 1 a 4)
+        switch (cluster)
+        {
+            case 1: // LUCA (internet 64.5/100)
+                // notifiche più freqeunti 
+                interval = 3.0f;
+                break;
+            case 2: // PIETRO (internet 16/100)
+                // notifiche normali
+                interval = 5.0f;
+                break;
+            case 3: // FRANCESCO (internet 91/10)
+                // notifiche molto piu frequenti
+                interval = 2.0f;
+                break;
+            case 4: // ELENA (internet 39/100)
+                // notifiche leggermente piu frequenti
+                interval = 4.0f;
+                break;
+        }
+        Debug.Log($"Cluster {cluster} → interval={interval}");
+
+        // incremento la difficoltà in base al giorno
+        int currentDay = PlayerPrefs.GetInt("CurrentDay", 1);
+        float difficultyIncrement = 0.05f * (currentDay - 1); // primo giorno = 0, secondo = 0.05, terzo = 0.10
+        interval = Mathf.Max(0.2f, interval - difficultyIncrement);
+        Debug.Log($"Giorno {currentDay} → interval={interval}");
+
         if (notificationUI != null)
             notificationUI.SetActive(false); // parte nascosta
     }

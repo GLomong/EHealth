@@ -15,6 +15,10 @@ public class DraggableNotification : MonoBehaviour, IBeginDragHandler, IDragHand
 
     void Awake()
     {
+        // incrementa il totale notifiche spawnate
+        if (giocoMan != null)
+            giocoMan.totalNotificationsSpawned++;
+            
         rectTransform = GetComponent<RectTransform>();
         startPosition = rectTransform.anchoredPosition;
         

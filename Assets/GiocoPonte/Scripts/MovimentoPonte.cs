@@ -43,9 +43,39 @@ public class MovimentoPonte : MonoBehaviour
 
     void Start()
     {
-       // Siccome ho inserito il pannello istruzioni non faccio partire la scena subito ppea schiaccio play ma aspetto che venga schiacciato il bottone 'start'
-        // StartCoroutine(EntrataInScena());
-        
+       // Adatta probabilità caduta in base al cluster
+        int cluster = PlayerPrefs.GetInt("UserCluster", 1); // default 1
+        switch(cluster)
+        {
+            case 1: // LUCA (gambling 0/27)
+                // valori normali 
+                probCadutaX2 = 0.2f;
+                probCadutaX3 = 0.4f;
+                break;
+            case 2: // PIETRO (gambling 2/27)
+                // valori normali 
+                probCadutaX2 = 0.2f;
+                probCadutaX3 = 0.4f;
+                break;
+            case 3: // FRANCESCO (gambling 6/27)
+                // valori più alti di poco
+                probCadutaX2 = 0.3f;
+                probCadutaX3 = 0.5f;
+                break;
+            case 4: // ELENA (gambling 15/27)
+                probCadutaX2 = 0.4f;
+                probCadutaX3 = 0.6f;
+                break;
+        }
+
+        Debug.Log($"Cluster {cluster} → probCadutaX2={probCadutaX2}, probCadutaX3={probCadutaX3}");
+
+        // incremento la difficoltà in base al giorno
+        int currentDay = PlayerPrefs.GetInt("CurrentDay", 1);
+        float difficultyIncrement = 0.05f * (currentDay - 1); // primo giorno = 0, secondo = 0.05, terzo = 0.10
+        probCadutaX2 = Mathf.Max(0.2f, probCadutaX2 - difficultyIncrement);
+        probCadutaX3 = Mathf.Max(0.4f, probCadutaX3 - difficultyIncrement);
+        Debug.Log($"Giorno {currentDay} → probCadutaX2={probCadutaX2}, probCadutaX3={probCadutaX3}");
     }
 
     void Update()
@@ -97,8 +127,8 @@ public class MovimentoPonte : MonoBehaviour
     public void Avanza(int quantiAssi)
     {
         if (!ingressoFinito || staMuovendo || inCooldown) return;
-
-        GameManagerBridge.instance.AggiungiPunti(quantiAssi);
+        
+        // Prima controllo se cade, se non cade aggiungo punti, se cade tolgo la penalità caduta
 
         if (quantiAssi == 1)
         {
@@ -121,7 +151,9 @@ public class MovimentoPonte : MonoBehaviour
             StartCoroutine(Caduta());
             return;
         }
-
+        
+        GameManagerBridge.instance.AggiungiPunti(quantiAssi);
+        
         indexCorrente += quantiAssi;
         if (indexCorrente >= punti.Length)
             indexCorrente = punti.Length - 1;
@@ -147,6 +179,7 @@ public class MovimentoPonte : MonoBehaviour
     IEnumerator Caduta()
     {
         Debug.Log("💀 CADUTO!");
+        Debug.Log("ScoreActive = " + GameManagerBridge.instance.scoreActive + " | Score prima = " + GameManagerBridge.instance.score);
 
         GameManagerBridge.instance.PenalitaCaduta();
 

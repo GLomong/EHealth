@@ -18,10 +18,15 @@ public class GiocoMan : MonoBehaviour
 
     [Header("Riferimenti gioco")]
     public PlayerCar player;
-    public GameOverUI gameOverUI;   // aggiunto: collegamento al pannello finale
+    public GameOverUI gameOverUI;   // collegamento al pannello finale
+    public CarCollision carCollision;     // per leggere i coni colpiti
 
     public int score = 0;
     public bool gameOver { get; private set; } = false;
+    public int totalNotificationsSpawned = 0; // per tenere traccia delle notifiche spawnate
+    public int totalSpawnedCones = 0; // per tenere traccia dei coni spawnati
+    private int finalGradePoints = 0; // punteggio finale calcolato alla fine del gioco
+    public int score_coni = 0; // per tenere traccia dei coni colpiti
 
     void Start()
     {
@@ -103,17 +108,43 @@ public class GiocoMan : MonoBehaviour
         {
             gameOverUI.ShowGameOver();
         }
+        
+        // variabili per punteggio
+        int finalGradePointsConi = 0;
+        int finalGradePointsNotifiche = 0;
 
-        Debug.Log("FINE GIOCO (notifiche)! Punteggio: " + score);
+        // Calcolo punteggio coni (proporzione con 50 punti massimi)
+        if (carCollision != null)
+            score_coni = carCollision.conesHit;
+            int maxScoreConi = totalSpawnedCones;
+            float scorePercentageConi = (float)score_coni / (float)maxScoreConi; 
+            finalGradePointsConi = Mathf.RoundToInt(scorePercentageConi * 50);
+            Debug.Log($"Game over. Punteggio Coni: {finalGradePointsConi} punti su 50");
+
+        // Calcolo punteggio notifiche (proporzione con 50 punti massimi)
+        if (score != null)
+        {
+            int maxScore = totalNotificationsSpawned;
+            float scorePercentage = (float)score / (float)maxScore; 
+            finalGradePointsNotifiche = Mathf.RoundToInt(scorePercentage * 50);
+            Debug.Log($"Game over. Punteggio Notifiche: {finalGradePointsNotifiche} punti su 50");
+        }
+
+        // Faccio la media dei due punteggi per il punteggio finale
+        finalGradePoints = (finalGradePointsConi + finalGradePointsNotifiche) / 2;
+
+        Debug.Log("FINE GIOCO (notifiche)! Punteggio: " + finalGradePoints + " punti su 50");
         SaveScoreForDay();
     }
 
     private void SaveScoreForDay()
     {
+        
+
         // Salva il punteggio finale del giorno corrente in PlayerPrefs
         int currentDay = TotalGameManager.Instance.CurrentDay;
-        PlayerPrefs.SetInt($"Day{currentDay}_CarScore", score);
+        PlayerPrefs.SetInt($"Day{currentDay}_CarScore", finalGradePoints);
         PlayerPrefs.Save();
-        Debug.Log($"[CarGameManager] Salvato Day {currentDay} Score = {score}");
+        Debug.Log($"[CarGameManager] Salvato Day {currentDay} Score = {finalGradePoints}");
     }
 }
