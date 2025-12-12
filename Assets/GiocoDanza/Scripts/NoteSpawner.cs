@@ -31,18 +31,18 @@ public class NoteSpawner : MonoBehaviour
         {
             case 1: // LUCA (droga 8/10)
                 // note più veloci e spawn più frequenti
-                travelTime = 1.2f;
-                autoSpawnInterval = 0.5f;
+                travelTime = 1.5f;
+                autoSpawnInterval = 0.7f;
                 break;
             case 2: // PIETRO (droga 4/10)
                 // note leggermente piu veloci del normale ma spawn normale 
-                travelTime = 1.8f;
+                travelTime = 1.7f;
                 autoSpawnInterval = 1.0f;
                 break;
             case 3: // FRANCESCO (droga 2/10)
                 // note normali ma spawn leggermente più frequenti
                 travelTime = 2.0f;
-                autoSpawnInterval = 0.7f;
+                autoSpawnInterval = 0.8f;
                 break;
             case 4: // ELENA (droga 0/10)
                 // note normali e spawn normali
@@ -51,6 +51,13 @@ public class NoteSpawner : MonoBehaviour
                 break;
         }
         Debug.Log($"Cluster {cluster} → travelTime={travelTime}, spawnInterval={autoSpawnInterval}");
+
+        // incremento la difficoltà in base al giorno
+        int currentDay = PlayerPrefs.GetInt("CurrentDay", 1);
+        float difficultyIncrement = 0.05f * (currentDay - 1); // primo giorno = 0, secondo = 0.05, terzo = 0.10
+        autoSpawnInterval = Mathf.Max(0.2f, autoSpawnInterval - difficultyIncrement);
+        travelTime = Mathf.Max(0.5f, travelTime - difficultyIncrement);
+        Debug.Log($"Giorno {currentDay} → autoSpawnInterval={autoSpawnInterval}");
     }
 
     void Update()

@@ -35,6 +35,12 @@ public class NotificationManager : MonoBehaviour
         }
         Debug.Log($"Cluster {cluster} → interval={interval}");
 
+        // incremento la difficoltà in base al giorno
+        int currentDay = PlayerPrefs.GetInt("CurrentDay", 1);
+        float difficultyIncrement = 0.05f * (currentDay - 1); // primo giorno = 0, secondo = 0.05, terzo = 0.10
+        interval = Mathf.Max(0.2f, interval - difficultyIncrement);
+        Debug.Log($"Giorno {currentDay} → interval={interval}");
+
         if (notificationUI != null)
             notificationUI.SetActive(false); // parte nascosta
     }

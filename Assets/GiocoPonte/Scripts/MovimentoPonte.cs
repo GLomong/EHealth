@@ -69,7 +69,13 @@ public class MovimentoPonte : MonoBehaviour
         }
 
         Debug.Log($"Cluster {cluster} → probCadutaX2={probCadutaX2}, probCadutaX3={probCadutaX3}");
-        
+
+        // incremento la difficoltà in base al giorno
+        int currentDay = PlayerPrefs.GetInt("CurrentDay", 1);
+        float difficultyIncrement = 0.05f * (currentDay - 1); // primo giorno = 0, secondo = 0.05, terzo = 0.10
+        probCadutaX2 = Mathf.Max(0.2f, probCadutaX2 - difficultyIncrement);
+        probCadutaX3 = Mathf.Max(0.4f, probCadutaX3 - difficultyIncrement);
+        Debug.Log($"Giorno {currentDay} → probCadutaX2={probCadutaX2}, probCadutaX3={probCadutaX3}");
     }
 
     void Update()
