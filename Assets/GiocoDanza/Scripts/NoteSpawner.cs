@@ -21,6 +21,38 @@ public class NoteSpawner : MonoBehaviour
 
     private float nextAutoSpawnTime = 0f;      // tempo della canzone per il prossimo spawn
 
+    void Start()
+    {
+        // ricavo il cluster dell'utente 
+        int cluster = PlayerPrefs.GetInt("UserCluster", 1);
+
+        // regolo l'autoSpawnInterval in base al cluster (cluster salvati da 1 a 4)
+        switch (cluster)
+        {
+            case 1: // LUCA (droga 8/10)
+                // note più veloci e spawn più frequenti
+                travelTime = 1.2f;
+                autoSpawnInterval = 0.5f;
+                break;
+            case 2: // PIETRO (droga 4/10)
+                // note leggermente piu veloci del normale ma spawn normale 
+                travelTime = 1.8f;
+                autoSpawnInterval = 1.0f;
+                break;
+            case 3: // FRANCESCO (droga 2/10)
+                // note normali ma spawn leggermente più frequenti
+                travelTime = 2.0f;
+                autoSpawnInterval = 0.7f;
+                break;
+            case 4: // ELENA (droga 0/10)
+                // note normali e spawn normali
+                travelTime = 2.0f;
+                autoSpawnInterval = 1.0f;
+                break;
+        }
+        Debug.Log($"Cluster {cluster} → travelTime={travelTime}, spawnInterval={autoSpawnInterval}");
+    }
+
     void Update()
     {
         if (!canSpawn) return;

@@ -3,6 +3,7 @@ using UnityEngine;
 public class ConeSpawner : MonoBehaviour
 {
     public GameObject conePrefab;
+    public GiocoMan giocoMan; 
     public float spawnInterval = 5f; 
     public float minX = -2.5f;
     public float maxX = 2.5f;
@@ -32,6 +33,10 @@ public class ConeSpawner : MonoBehaviour
 
     void SpawnCone()
     {
+        // incrementa il totale coni spawnati
+        if (giocoMan != null)
+            giocoMan.totalSpawnedCones++;
+
         // Se il gioco è finito per sicurezza NON spawnare
         if (GameOverUI.gameEnded)
             return;
