@@ -143,11 +143,42 @@ public class TaxiTrigger : MonoBehaviour
         int gentlemenScore = PlayerPrefs.GetInt($"Day{currentDay}_GentlemenScore", 0);
         int friendScore = PlayerPrefs.GetInt($"Day{currentDay}_FriendScore", 0); 
     
-        // Applica dei pesi ai punteggi dei minigiochi (da vedere con personalisation)
+        // Applica dei pesi ai punteggi dei minigiochi in base al cluster dell'utente
+        int cluster = PlayerPrefs.GetInt("UserCluster", 1); // default 1
         float marketWeight = 0.25f;
         float carWeight = 0.25f;
         float bridgeWeight = 0.25f;
         float danceWeight = 0.25f;
+
+        switch(cluster)
+        {
+            // faccio in modo che i pesi sommati facciano 1 perchè poi non facciamo la media ma la somma pesata
+            case 1: // LUCA (droga alto e internet medio)
+                marketWeight = 0.2f;
+                danceWeight = 0.4f;
+                bridgeWeight = 0.05f;
+                carWeight = 0.35f;
+                break;
+            case 2: // PIETRO (alcolismo medio e droga medio)
+                marketWeight = 0.3f;
+                danceWeight = 0.35f;
+                bridgeWeight = 0.1f;
+                carWeight = 0.25f;
+                break;
+            case 3: // FRANCESCO (internet altissimo)
+                marketWeight = 0.15f;
+                danceWeight = 0.3f;
+                bridgeWeight = 0.15f;
+                carWeight = 0.4f;
+                break;
+            case 4: // ELENA (alcolismo alto e internet medio-basso e gambling alto)
+                marketWeight = 0.4f;
+                danceWeight = 0.05f;
+                bridgeWeight = 0.3f;
+                carWeight = 0.25f;
+                break;
+        }
+        
 
         // Calcola il punteggio totale ponderato dei minigiochi
         float totalScore = (marketScore * marketWeight) +
