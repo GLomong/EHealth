@@ -19,11 +19,9 @@ public class TotalGameManager : MonoBehaviour
         if (PlayerPrefs.HasKey(PlayerPrefsCurrentDayKey))
         {
             int savedDay = PlayerPrefs.GetInt(PlayerPrefsCurrentDayKey, 1);
-            if (savedDay > totalDays)
+            if (savedDay >= totalDays)
             {
-                CurrentDay = 1;
-                PlayerPrefs.SetInt(PlayerPrefsCurrentDayKey, 1);
-                PlayerPrefs.Save(); 
+                ResetAllProgress();
             }
         }
     }

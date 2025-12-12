@@ -6256,6 +6256,7 @@ MonoBehaviour:
     - 2-4 times a month
     - '2-3 times a week '
     - 4 or more times a week
+    punteggi: 0000000001000000020000000300000004000000
   - testo: 'How often during the last year have you found that you were not able
       to stop drinking once you had started? '
     risposte:
@@ -6264,27 +6265,32 @@ MonoBehaviour:
     - 2-4 times a month
     - '2-3 times a week '
     - 4 or more times a week
+    punteggi: 0000000001000000020000000300000004000000
   - testo: 'Have you used drugs other than those required for medical reasons? '
     risposte:
     - Yes
     - No
+    punteggi: 0100000000000000
   - testo: 'Does your spouse (or parents) ever complain about your involvement with
       drugs? '
     risposte:
     - Yes
     - No
+    punteggi: 0100000000000000
   - testo: 'Have you felt that you might have a problem with gambling? '
     risposte:
     - Never
     - Sometimes
     - Most of the time
     - Almost always
+    punteggi: 00000000010000000200000003000000
   - testo: 'Have you bet more than you could really afford to lose? '
     risposte:
     - Never
     - Sometimes
     - Most of the time
     - Almost always
+    punteggi: 00000000010000000200000003000000
   - testo: "How often do you find yourself saying \u201Cjust a few more minutes\u201D
       when online? "
     risposte:
@@ -6294,6 +6300,7 @@ MonoBehaviour:
     - Often
     - Very often
     - Always
+    punteggi: 000000000100000002000000030000000400000005000000
   - testo: 'How often does your job performance or productivity suffer because of
       the Internet? '
     risposte:
@@ -6303,6 +6310,7 @@ MonoBehaviour:
     - Often
     - Very often
     - Always
+    punteggi: 000000000100000002000000030000000400000005000000
   textDomanda: {fileID: 1880938815}
   textRisposte:
   - {fileID: 91926687}
