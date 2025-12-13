@@ -102,6 +102,8 @@ public class TotalGameManager : MonoBehaviour
             PlayerPrefs.DeleteKey($"Day{day}_GentlemenScore");
             PlayerPrefs.DeleteKey($"Day{day}_FriendScore");
             PlayerPrefs.DeleteKey($"Day{day}_DialoguesScore");
+            PlayerPrefs.DeleteKey($"Day{day}_OldMan_Spoken");
+            PlayerPrefs.DeleteKey($"Day{day}_Kid_Spoken");
         }
 
         PlayerPrefs.Save();

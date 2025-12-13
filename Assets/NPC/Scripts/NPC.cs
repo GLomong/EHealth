@@ -56,40 +56,21 @@ public class NPC : MonoBehaviour, IInteractable
 
     void NextLine()
     {
-        // SE STA ANCORA SCRIVENDO → completa subito la frase
         if (isTyping)
         {
             StopAllCoroutines();
             dialogueText.text = dialogueData.dialogueLines[dialogueIndex];
             isTyping = false;
         }
-        // Se ci sono altre frasi → vai avanti
         else if (++dialogueIndex < dialogueData.dialogueLines.Length)
         {
             StartCoroutine(TypeLine());
         }
-        // ARRIVATI ALLA FINE DEL DIALOGO
         else
         {
-            // Se ci sono scelte → mostriamo la UI delle scelte
-            if (dialogueData.hasChoices)
-            {
-                waitingForChoice = true;
-                // far comparire il pannello delle scelte, indipendenti (3 bottoni indipendenti: 2, 1, 0)
-                DialogueChoiceUI.Instance.ShowChoices(dialogueData.choices);
-                // Importante: il dialogo non deve andare avanti
-                isDialogueActive = false;
-            }
-            else
-            {
-                EndDialogue();
-            }
+            EndDialogue();
         }
     }
-    
-    // comparire scelte
-    // disattivare NPC
-
     
     IEnumerator TypeLine()
     {
@@ -104,7 +85,6 @@ public class NPC : MonoBehaviour, IInteractable
 
         isTyping = false;
 
-        // Se questa linea deve avanzare automaticamente
         if (dialogueData.autoProgressLines.Length > dialogueIndex &&
             dialogueData.autoProgressLines[dialogueIndex])
         {
@@ -125,6 +105,7 @@ public class NPC : MonoBehaviour, IInteractable
             PlayerPrefs.Save();
         }
 
+        // Mostra pannello delle scelte se necessario
         if (ChoicePanel != null)
             ChoicePanel.SetActive(true);
     }
