@@ -9,6 +9,14 @@ public class NPC : MonoBehaviour, IInteractable
     public TMP_Text dialogueText;
     public TMP_Text nameText;
     public GameObject ChoicePanel;
+    [Header("Choices Settings")]
+    public Button sceltaPositiva;
+    public Button sceltaNeutra;
+    public Button sceltaNegativa;
+    public TMP_Text testoSceltaPositiva;
+    public TMP_Text testoSceltaNeutra;
+    public TMP_Text testoSceltaNegativa;
+    public PunteggiScelte punteggiScelte; 
 
     [Header("NPC Settings")]
     public string npcName; // Cashier, Influencer, Gentlemen, Friend, ...
@@ -18,6 +26,9 @@ public class NPC : MonoBehaviour, IInteractable
     private int dialogueIndex = 0;
     private bool isTyping = false;
     private bool waitingForChoice = false;
+    private string[] currentDialogueLines;
+    private bool[] currentAutoProgressLines;
+    private ChoiceOption[] currentChoices;
 
 
     // Permette al sistema di sapere se puoi parlare
@@ -47,6 +58,13 @@ public class NPC : MonoBehaviour, IInteractable
         isDialogueActive = true;
         dialogueIndex = 0;
 
+        int currentDay = TotalGameManager.Instance.CurrentDay;
+
+        // Prendi le frasi del giorno corrente
+        currentDialogueLines = dialogueData.dialogueLines(currentDay);
+        currentAutoProgressLines = dialogueData.autoProgressLines(currentDay);
+        currentChoices = dialogueData.GetChoicesForDay(currentDay);
+
         nameText.text = dialogueData.npcName;
 
         dialoguePanel.SetActive(true);
@@ -59,10 +77,11 @@ public class NPC : MonoBehaviour, IInteractable
         if (isTyping)
         {
             StopAllCoroutines();
-            dialogueText.text = dialogueData.dialogueLines[dialogueIndex];
+            //dialogueText.text = dialogueData.dialogueLines[dialogueIndex];
+            dialogueText.text = currentDialogueLines[dialogueIndex];
             isTyping = false;
         }
-        else if (++dialogueIndex < dialogueData.dialogueLines.Length)
+        else if (++dialogueIndex < currentDialogueLines.Length)
         {
             StartCoroutine(TypeLine());
         }
@@ -77,7 +96,7 @@ public class NPC : MonoBehaviour, IInteractable
         isTyping = true;
         dialogueText.SetText("");
 
-        foreach (char letter in dialogueData.dialogueLines[dialogueIndex])
+        foreach (char letter in currentDialogueLines[dialogueIndex])
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(dialogueData.typingSpeed);
@@ -85,8 +104,8 @@ public class NPC : MonoBehaviour, IInteractable
 
         isTyping = false;
 
-        if (dialogueData.autoProgressLines.Length > dialogueIndex &&
-            dialogueData.autoProgressLines[dialogueIndex])
+        if ( currentAutoProgressLines.Length > dialogueIndex &&
+            currentAutoProgressLines[dialogueIndex])
         {
             yield return new WaitForSeconds(dialogueData.autoProgressDelay);
             NextLine();
@@ -107,7 +126,9 @@ public class NPC : MonoBehaviour, IInteractable
 
         // Mostra pannello delle scelte se necessario
         if (ChoicePanel != null)
+            SetUpChoices();
             ChoicePanel.SetActive(true);
+            waitingForChoice = true;
     }
 
     string GetDailyKey()
@@ -118,6 +139,38 @@ public class NPC : MonoBehaviour, IInteractable
             return $"Day{day}_{npcName}Score";
         else
             return $"Day{day}_{npcName}_Spoken";
+    }
+    void SetUpChoices()
+{
+    if (currentChoices == null || currentChoices.Length != 3)
+    {
+        Debug.LogError($"[NPC:{npcName}] Numero di scelte non valido: {currentChoices?.Length ?? 0}. Devono essere esattamente 3.");
+        return;
+    }
+
+    // Imposta testi delle scelte
+    testoSceltaPositiva.text = currentChoices[0].buttonText;
+    testoSceltaNeutra.text = currentChoices[1].buttonText;
+    testoSceltaNegativa.text = currentChoices[2].buttonText;
+
+    // Rimuovi listener precedenti
+    sceltaPositiva.onClick.RemoveAllListeners();
+    sceltaNeutra.onClick.RemoveAllListeners();
+    sceltaNegativa.onClick.RemoveAllListeners();
+
+    // Aggiungi nuovi listener CON i punteggi corretti del giorno
+    sceltaPositiva.onClick.AddListener(() => OnChoiceSelected(currentChoices[0].scoreValue));
+    sceltaNeutra.onClick.AddListener(() => OnChoiceSelected(currentChoices[1].scoreValue));
+    sceltaNegativa.onClick.AddListener(() => OnChoiceSelected(currentChoices[2].scoreValue));
+}
+
+    public void OnChoiceSelected(int scoreValue)  
+    {
+        if (punteggiScelte != null)
+        {
+            punteggiScelte.ChoiceButtonClick(scoreValue);
+        }
+        waitingForChoice = false;
     }
 }
 

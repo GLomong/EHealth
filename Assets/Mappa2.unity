@@ -203,8 +203,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -953,7 +953,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 2}
-  m_SizeDelta: {x: 160, y: 120}
+  m_SizeDelta: {x: 240, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &235047958
 MonoBehaviour:
@@ -999,9 +999,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1966217386}
-        m_TargetAssemblyTypeName: PunteggiScelte, Assembly-CSharp
-        m_MethodName: ChoiceButtonClick
+      - m_Target: {fileID: 831929571}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: OnChoiceSelected
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1024,7 +1024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.78039217}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1106,7 +1106,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "f they\u2019re real friends, \nthey won\u2019t pressure me."
+  m_text: "If they\u2019re real friends, \nthey won\u2019t pressure me."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1133,8 +1133,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1851,7 +1851,7 @@ GameObject:
   - component: {fileID: 643903400}
   - component: {fileID: 643903399}
   m_Layer: 5
-  m_Name: SceltaPositiva
+  m_Name: SceltaNegativa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1875,7 +1875,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 250, y: 2}
-  m_SizeDelta: {x: 160, y: 120}
+  m_SizeDelta: {x: 240, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &643903399
 MonoBehaviour:
@@ -1921,9 +1921,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1966217386}
-        m_TargetAssemblyTypeName: PunteggiScelte, Assembly-CSharp
-        m_MethodName: ChoiceButtonClick
+      - m_Target: {fileID: 831929571}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: OnChoiceSelected
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1946,7 +1946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.78039217}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2007,6 +2007,13 @@ MonoBehaviour:
   dialogueText: {fileID: 1393501597}
   nameText: {fileID: 199870963}
   ChoicePanel: {fileID: 1966217384}
+  sceltaPositiva: {fileID: 1069301709}
+  sceltaNeutra: {fileID: 235047958}
+  sceltaNegativa: {fileID: 643903399}
+  testoSceltaPositiva: {fileID: 277821050}
+  testoSceltaNeutra: {fileID: 1969747042}
+  testoSceltaNegativa: {fileID: 39028742}
+  punteggiScelte: {fileID: 1966217386}
   npcName: Friend
   hasScore: 1
 --- !u!61 &831929572
@@ -2975,7 +2982,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -250, y: 2}
-  m_SizeDelta: {x: 160, y: 120}
+  m_SizeDelta: {x: 240, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1069301709
 MonoBehaviour:
@@ -3021,9 +3028,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1966217386}
-        m_TargetAssemblyTypeName: PunteggiScelte, Assembly-CSharp
-        m_MethodName: ChoiceButtonClick
+      - m_Target: {fileID: 831929571}
+        m_TargetAssemblyTypeName: NPC, Assembly-CSharp
+        m_MethodName: OnChoiceSelected
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3046,7 +3053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.78039217}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7990,8 +7997,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

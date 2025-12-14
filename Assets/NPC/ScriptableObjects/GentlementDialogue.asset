@@ -13,11 +13,40 @@ MonoBehaviour:
   m_Name: GentlementDialogue
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
   npcName: Gentlemen
-  dialogueLines:
-  - Why go slow? Big steps mean big wins!
-  - "Slow and steady keeps you safe\u2026 but you won\u2019t win that way!"
-  autoProgressLines: 0100
-  autoProgressDelay: 1.5
   typingSpeed: 0.05
-  hasChoices: 1
-  choices: []
+  autoProgressDelay: 1.5
+  day1Lines:
+  - Why go slow? Big steps mean big wins!
+  - Slow and steady keeps you safe, but you won't win that way!
+  day2Lines:
+  - dialogue day2
+  - line2
+  day3Lines:
+  - dialogue day3
+  - line3
+  autoProgressDay1: 0100
+  autoProgressDay2: 0100
+  autoProgressDay3: 0100
+  day1Choices:
+  - buttonText: Safety matters more to me.
+    scoreValue: 2
+  - buttonText: "Maybe\u2026 \nbut slow is safer."
+    scoreValue: 1
+  - buttonText: "Fine, I\u2019ll take the risk!"
+    scoreValue: 0
+  day2Choices:
+  - buttonText: scleta positiva
+    scoreValue: 2
+  - buttonText: 
+    scoreValue: 0
+  - buttonText: scelta neutra
+    scoreValue: 1
+  - buttonText: scelta negativa
+    scoreValue: 0
+  day3Choices:
+  - buttonText: scelta positiva
+    scoreValue: 2
+  - buttonText: scelta neutra
+    scoreValue: 1
+  - buttonText: scelta negativa
+    scoreValue: 0

@@ -13,14 +13,17 @@ MonoBehaviour:
   m_Name: OldManDialogue
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
   npcName: Old Man
-  dialogueLines:
-  - "You know\u2026 when I was younger, I used to follow every shortcut through this
-    park."
-  - "Looked faster, easier. Funny thing is\u2026 I always ended up more lost than
-    before."
-  - 
-  autoProgressLines: 0100
-  autoProgressDelay: 1.5
   typingSpeed: 0.05
-  hasChoices: 1
-  choices: []
+  autoProgressDelay: 1.5
+  day1Lines:
+  - You know, when I was younger, I used to follow every shortcut through this park.
+  - 'Looked faster, easier. Funny thing is: I always ended up more lost than before.'
+  day2Lines:
+  - dialogue day2
+  - line2
+  day3Lines:
+  - dialogue day3
+  - line2
+  autoProgressDay1: 0100
+  autoProgressDay2: 0100
+  autoProgressDay3: 0100
