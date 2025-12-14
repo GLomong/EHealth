@@ -4187,11 +4187,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   pensieriPerGiorno:
   - giorno: 1
-    pensiero: Let's see.. I should go shopping for my grandma...
+    pensiero: Let's see.. I should go grocery shopping for my grandma...
   - giorno: 2
-    pensiero: 'ho un dejavu... '
+    pensiero: "This feel like a d\xE9j\xE0 vu.. Nevernind. What did Nana want from
+      the market? I can't rember."
   - giorno: 3
-    pensiero: Terribile giornata...
+    pensiero: Rough day today... I hope the market isn't closed.
   pensieroText: {fileID: 1209397216}
   bottomPanel: {fileID: 1352708419}
   closeButton: {fileID: 285529831}

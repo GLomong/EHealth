@@ -19,11 +19,11 @@ MonoBehaviour:
   - Come on! Everyone's trying it.
   - Don't be the boring one.
   day2Lines:
-  - Dialogue day2
-  - line2
+  - Just try it!
+  - It'll make the music so much better.
   day3Lines:
-  - dialogue day3
-  - line3
+  - Don't be lame, it's totally safe and you only live once.
+  - Come on, let's get this party started!
   autoProgressDay1: 0100
   autoProgressDay2: 0100
   autoProgressDay3: 0100
@@ -35,16 +35,16 @@ MonoBehaviour:
   - buttonText: Fine, give me some.
     scoreValue: 0
   day2Choices:
-  - buttonText: scelta positiva
+  - buttonText: I don't need that stuff to enjoy the music.
     scoreValue: 2
-  - buttonText: scleta neutra
+  - buttonText: I'm not sure..
     scoreValue: 1
-  - buttonText: scelta negativa
+  - buttonText: Ok, let's see what all the fuss is about.
     scoreValue: 0
   day3Choices:
-  - buttonText: scelta positiva
+  - buttonText: Stop pushing me man, I don't want any trouble.
     scoreValue: 2
-  - buttonText: scelta neutra
+  - buttonText: Maybe later, I'm still figuring out how I feel about it.
     scoreValue: 1
-  - buttonText: scelta negativa
+  - buttonText: You know what? You're right. YOLO!
     scoreValue: 0
