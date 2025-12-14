@@ -5,8 +5,6 @@ using System.Collections; // per lampeggio testo
 public class ScoreManager : MonoBehaviour
 {
     public int score = 0;
-    public int combo = 0;
-    public int maxCombo = 0;
 
     [Header("UI")]
     public TextMeshProUGUI scoreText;
@@ -29,22 +27,18 @@ public class ScoreManager : MonoBehaviour
     }
     public void AddScore(int amount, string grade)
     {
-        combo++;
-        score += amount * (1 + combo/10); // semplice moltiplicatore per combo
-        if (combo > maxCombo) maxCombo = combo;
-
+        score += amount;
         UpdateScoreUI(); // aggiorna l'UI ogni volta che cambia lo score
 
         if (grade == "Perfect")
-            ShowScoreText($"<color=yellow>{grade}: +{amount}!</color>\nCombo: {combo}");
+            ShowScoreText($"<color=yellow>{grade}: +{amount}!</color>");
         else if (grade == "Good")
-            ShowScoreText($"<color=green>{grade}: +{amount}!</color>\nCombo: {combo}");
+            ShowScoreText($"<color=green>{grade}: +{amount}!</color>");
         else
-            ShowScoreText($"{grade}: +{amount}!\nCombo: {combo}");
+            ShowScoreText($"{grade}: +{amount}!");
     }
     public void RegisterMiss()
     {
-        combo = 0;
         UpdateScoreUI(); // aggiorna l'UI ogni volta che cambia lo score
         ShowScoreText($"<color=red>Miss: +0\nStamina -10</color>");
     }
