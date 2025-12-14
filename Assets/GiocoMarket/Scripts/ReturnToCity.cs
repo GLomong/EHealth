@@ -8,7 +8,6 @@ public class ReturnToCity : MonoBehaviour
     {
         // Dico alla scena successiva che arriviamo dal Market
         PlayerPrefs.SetInt("ReturnFromMarket", 1);
-
         SceneManager.LoadScene("Città");
     }
 }

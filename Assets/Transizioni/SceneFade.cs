@@ -5,21 +5,22 @@ using System.Collections;
 public class SceneFade : MonoBehaviour
 {
     public CanvasGroup fadeCanvas;
+    public CanvasGroup phoneCanvas;
     public float fadeDuration = 1f;
 
     private void Start()
     {
-        // NON partire da nero automaticamente.
-        // Assicuriamo solo che il pannello sia trasparente
+        // Parte da nero e sischiarisce fino a trasparente
         if (fadeCanvas != null)
         {
-            fadeCanvas.alpha = 0;
+            fadeCanvas.alpha = 1;
+            if (phoneCanvas != null)
+                phoneCanvas.alpha = 0;
+            StartCoroutine(FadeFromBlack());
         }
     }
 
-    // -------------------------
     // FADE OUT + CAMBIO SCENA
-    // -------------------------
     public void FadeToScene(string sceneName)
     {
         StartCoroutine(FadeAndLoad(sceneName));
@@ -39,6 +40,8 @@ public class SceneFade : MonoBehaviour
         {
             t += Time.deltaTime;
             fadeCanvas.alpha = Mathf.Lerp(startAlpha, endAlpha, Mathf.SmoothStep(0, 1, t / fadeDuration));
+            if (phoneCanvas != null)
+                phoneCanvas.alpha = Mathf.Lerp(1, 0, Mathf.SmoothStep(0, 1, t / fadeDuration));
             yield return null;
         }
 
@@ -47,9 +50,7 @@ public class SceneFade : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    // -------------------------
-    // FADE MANUALE DOPO IL CARICAMENTO (se serve)
-    // -------------------------
+    // FADE di ritorno da black a trasparente
     public void FadeIn()
     {
         StartCoroutine(FadeFromBlack());
@@ -57,12 +58,15 @@ public class SceneFade : MonoBehaviour
 
     private IEnumerator FadeFromBlack()
     {
+        Debug.Log("[SceneFade] Inizio Fade From Black");
         float t = 0;
 
         while (t < fadeDuration)
         {
             t += Time.deltaTime;
             fadeCanvas.alpha = Mathf.Lerp(1, 0, t / fadeDuration);
+            if (phoneCanvas != null)
+                phoneCanvas.alpha = Mathf.Lerp(0, 1, t / fadeDuration);
             yield return null;
         }
 

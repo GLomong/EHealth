@@ -13,11 +13,38 @@ MonoBehaviour:
   m_Name: CashierDialogue
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
   npcName: Cashier
-  dialogueLines:
+  typingSpeed: 0.05
+  autoProgressDelay: 1.5
+  day1Lines:
   - Welcome to the supermarket!
   - There is a 3x2 offer on wine today!
-  autoProgressLines: 0100
-  autoProgressDelay: 1.5
-  typingSpeed: 0.05
-  hasChoices: 1
-  choices: []
+  day2Lines:
+  - Dialogue day2
+  - line 2
+  day3Lines:
+  - Dialogue day3
+  - line 3
+  autoProgressDay1: 0100
+  autoProgressDay2: 0100
+  autoProgressDay3: 0100
+  day1Choices:
+  - buttonText: "No thanks, I\u2019m trying to drink less"
+    scoreValue: 2
+  - buttonText: "I\u2019ll think about it\u2026 maybe later"
+    scoreValue: 1
+  - buttonText: "Sounds great, I\u2019ll take some!"
+    scoreValue: 0
+  day2Choices:
+  - buttonText: scelta positiva
+    scoreValue: 2
+  - buttonText: scelta neutra
+    scoreValue: 1
+  - buttonText: scelta negativa
+    scoreValue: 0
+  day3Choices:
+  - buttonText: scelta positiva
+    scoreValue: 2
+  - buttonText: scleta neutra
+    scoreValue: 1
+  - buttonText: sxelta negativa
+    scoreValue: 0

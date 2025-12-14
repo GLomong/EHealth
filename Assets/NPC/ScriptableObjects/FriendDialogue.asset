@@ -12,12 +12,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a666285909a294b43b167e0cbaac401f, type: 3}
   m_Name: FriendDialogue
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
-  npcName: Influencer
-  dialogueLines:
-  - "Come on! Everyone\u2019s trying it."
-  - "Don\u2019t be the boring one."
-  autoProgressLines: 0100
-  autoProgressDelay: 1.5
+  npcName: Mark
   typingSpeed: 0.05
-  hasChoices: 1
-  choices: []
+  autoProgressDelay: 1.5
+  day1Lines:
+  - Come on! Everyone's trying it.
+  - Don't be the boring one.
+  day2Lines:
+  - Dialogue day2
+  - line2
+  day3Lines:
+  - dialogue day3
+  - line3
+  autoProgressDay1: 0100
+  autoProgressDay2: 0100
+  autoProgressDay3: 0100
+  day1Choices:
+  - buttonText: "If they\u2019re real friends, \nthey won\u2019t pressure me."
+    scoreValue: 2
+  - buttonText: "I just\u2026 don\u2019t know."
+    scoreValue: 1
+  - buttonText: Fine, give me some.
+    scoreValue: 0
+  day2Choices:
+  - buttonText: scelta positiva
+    scoreValue: 2
+  - buttonText: scleta neutra
+    scoreValue: 1
+  - buttonText: scelta negativa
+    scoreValue: 0
+  day3Choices:
+  - buttonText: scelta positiva
+    scoreValue: 2
+  - buttonText: scelta neutra
+    scoreValue: 1
+  - buttonText: scelta negativa
+    scoreValue: 0

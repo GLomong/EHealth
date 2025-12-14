@@ -131,7 +131,7 @@ public class GiocoMan : MonoBehaviour
         }
 
         // Faccio la media dei due punteggi per il punteggio finale
-        finalGradePoints = (finalGradePointsConi + finalGradePointsNotifiche) / 2;
+        finalGradePoints = Mathf.RoundToInt((finalGradePointsConi + finalGradePointsNotifiche) / 2f);
 
         Debug.Log("FINE GIOCO (notifiche)! Punteggio: " + finalGradePoints + " punti su 50");
         SaveScoreForDay();
@@ -139,8 +139,6 @@ public class GiocoMan : MonoBehaviour
 
     private void SaveScoreForDay()
     {
-        
-
         // Salva il punteggio finale del giorno corrente in PlayerPrefs
         int currentDay = TotalGameManager.Instance.CurrentDay;
         PlayerPrefs.SetInt($"Day{currentDay}_CarScore", finalGradePoints);

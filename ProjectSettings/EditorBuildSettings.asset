@@ -35,5 +35,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/InizioGiornata1.unity
     guid: d2a1567c0208d40aa910de989497264a
+  - enabled: 1
+    path: Assets/Finale Negativo.unity
+    guid: 9022780c844bf496c8aa325e545db8a9
+  - enabled: 1
+    path: Assets/Finale Positivo.unity
+    guid: bc03430ab329c4b5b888d92341b3569b
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

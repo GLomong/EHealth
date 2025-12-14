@@ -27,6 +27,7 @@ public class LaptopManager : MonoBehaviour
     // Bottone "OK" nelle istruzioni iniziali, premendo ok il box istruzioni si spegne e si apre la schermata login
     public void ChiudiIstruzioni()
     {
+        TotalGameManager.Instance.ResetAllProgress(); // Resetta tutti i progressi all'inizio del gioco (compreso questionario e cluster)
         boxIstruzioni.SetActive(false);
     }
 

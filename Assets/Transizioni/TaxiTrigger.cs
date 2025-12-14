@@ -8,6 +8,7 @@ public class TaxiTrigger : MonoBehaviour
     public GameObject player;              // Riferimento al ragazzo
     public GameObject fineGiornoPanel;     // Pannello UI "Fine giorno 1"
     public TMPro.TextMeshProUGUI endDayText; // Testo da mostrare nel pannello
+    public CanvasGroup phoneCanvas;      // canva del telefono
     public float speed = 5f;               // Velocità taxi
     public string nextSceneName = "Città"; // Nome della scena successiva
 
@@ -38,7 +39,12 @@ public class TaxiTrigger : MonoBehaviour
     {
         // Calcolo il punteggio totale del giorno e lo salvo 
         SaveScoreForDay();
-        int dayScore = PlayerPrefs.GetInt($"Day{TotalGameManager.Instance.CurrentDay}_TotalScore", 0);
+        int dayScore = PlayerPrefs.GetInt($"Day{TotalGameManager.Instance.CurrentDay}_TotalScore", 0); // punteggio solo minigiochi, pesato
+        int totalScore = 0;
+        if (TotalGameManager.Instance.CurrentDay >= TotalGameManager.Instance.totalDays)
+        {
+            totalScore = TotalGameManager.Instance.GetTotalGameScore();
+        }
 
         // 1. Preparo pannello e testo
         CanvasGroup cg = fineGiornoPanel.GetComponent<CanvasGroup>();
@@ -48,7 +54,8 @@ public class TaxiTrigger : MonoBehaviour
         Color textColor = endDayText.color;
         textColor.a = 0f;
         endDayText.color = textColor;
-        endDayText.text = "End of Day " + TotalGameManager.Instance.CurrentDay + "\nScore: " + dayScore;
+        endDayText.text = "End of Day " + TotalGameManager.Instance.CurrentDay + "\nScore: " + dayScore + "/50" + 
+                         (totalScore > 0 ? $"\n\nTotal Score: {totalScore}/200" : "");
 
         float timer = 0f;
         float endAlpha = 0.6f;
@@ -63,6 +70,7 @@ public class TaxiTrigger : MonoBehaviour
             // Fade in del pannello e del testo
             if (timer < fadeInDuration)
             {
+                phoneCanvas.alpha = Mathf.Lerp(1f, 0f, timer / fadeInDuration); // Fai scomparire il canvas del telefono
                 cg.alpha = Mathf.Lerp(0f, endAlpha, timer / fadeInDuration);
                 textColor.a = Mathf.Lerp(0f, 1f, timer / fadeInDuration);
                 endDayText.color = textColor;
@@ -142,24 +150,62 @@ public class TaxiTrigger : MonoBehaviour
         int influencerScore = PlayerPrefs.GetInt($"Day{currentDay}_InfluencerScore", 0);
         int gentlemenScore = PlayerPrefs.GetInt($"Day{currentDay}_GentlemenScore", 0);
         int friendScore = PlayerPrefs.GetInt($"Day{currentDay}_FriendScore", 0); 
+
+        // Legge i punteggi delle notifiche
+        int notifica1Score = PlayerPrefs.GetInt($"Day{currentDay}_Notifica1_Score", 0);
+        int notifica2Score = PlayerPrefs.GetInt($"Day{currentDay}_Notifica2_Score", 0);
+        int notifica3Score = PlayerPrefs.GetInt($"Day{currentDay}_Notifica3_Score", 0);
     
-        // Applica dei pesi ai punteggi dei minigiochi (da vedere con personalisation)
+        // Applica dei pesi ai punteggi dei minigiochi in base al cluster dell'utente
+        int cluster = PlayerPrefs.GetInt("UserCluster", 1); // default 1
         float marketWeight = 0.25f;
         float carWeight = 0.25f;
         float bridgeWeight = 0.25f;
         float danceWeight = 0.25f;
 
-        // Calcola il punteggio totale ponderato dei minigiochi
+        switch(cluster)
+        {
+            // faccio in modo che i pesi sommati facciano 1 perchè poi non facciamo la media ma la somma pesata
+            case 1: // LUCA (droga alto e internet medio)
+                marketWeight = 0.2f;
+                danceWeight = 0.4f;
+                bridgeWeight = 0.05f;
+                carWeight = 0.35f;
+                break;
+            case 2: // PIETRO (alcolismo medio e droga medio)
+                marketWeight = 0.3f;
+                danceWeight = 0.35f;
+                bridgeWeight = 0.1f;
+                carWeight = 0.25f;
+                break;
+            case 3: // FRANCESCO (internet altissimo)
+                marketWeight = 0.15f;
+                danceWeight = 0.3f;
+                bridgeWeight = 0.15f;
+                carWeight = 0.4f;
+                break;
+            case 4: // ELENA (alcolismo alto e internet medio-basso e gambling alto)
+                marketWeight = 0.4f;
+                danceWeight = 0.05f;
+                bridgeWeight = 0.3f;
+                carWeight = 0.25f;
+                break;
+        }
+
+        // Calcola il punteggio totale ponderato dei minigiochi (max 50 punti)
         float totalScore = (marketScore * marketWeight) +
                            (carScore * carWeight) +
                            (bridgeScore * bridgeWeight) +
                            (danceScore * danceWeight);
         
-        // Calcolo il punteggio totale dei dialoghi 
+        // Calcolo il punteggio totale dei dialoghi (max 2 punti)
         float dialoghiScore = (cashierScore * marketWeight) + 
                                 (influencerScore * carWeight) +
                                 (gentlemenScore * bridgeWeight) +
                                 (friendScore * danceWeight);
+
+        // Calcolo il punteggio totale delle notifiche (max 6 punti)
+        float notificheScore = notifica1Score + notifica2Score + notifica3Score;                     
 
         // Salva il punteggio totale (dei minigiochi) del giorno corrente in PlayerPrefs
         PlayerPrefs.SetInt($"Day{currentDay}_TotalScore", Mathf.RoundToInt(totalScore));
@@ -167,6 +213,10 @@ public class TaxiTrigger : MonoBehaviour
 
         // Salva il punteggio totale dei dialoghi del giorno corrente in PlayerPrefs
         PlayerPrefs.SetInt($"Day{currentDay}_DialoguesScore", Mathf.RoundToInt(dialoghiScore));
+        PlayerPrefs.Save();
+
+        // Salva il punteggio totale delle notifiche del giorno corrente in PlayerPrefs
+        PlayerPrefs.SetInt($"Day{currentDay}_NotificationScore", Mathf.RoundToInt(notificheScore));
         PlayerPrefs.Save();
     }
 }

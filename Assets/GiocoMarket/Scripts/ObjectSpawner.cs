@@ -24,7 +24,7 @@ public class ObjectSpawner : MonoBehaviour
     void Start()
     {
         // ricavo il cluster dell'utente 
-        int cluster = PlayerPrefs.GetInt("UserCluster", 1);
+        int cluster = PlayerPrefs.GetInt("ClusterUtente", 1);
 
         // regolo lo spawnInterval in base al cluster (cluster salvati da 1 a 4)
         switch (cluster)
@@ -55,6 +55,13 @@ public class ObjectSpawner : MonoBehaviour
                 break;
         }
         Debug.Log($"Cluster {cluster} → alcoholStartProbability={alcoholStartProbability}, alcoholEndProbability={alcoholEndProbability}, spawnInterval={spawnInterval}");
+
+        // incremento la difficoltà in base al giorno
+        int currentDay = PlayerPrefs.GetInt("CurrentDay", 1);
+        float difficultyIncrement = 0.05f * (currentDay - 1); // primo giorno = 0, secondo = 0.05, terzo = 0.10
+        spawnInterval = Mathf.Max(0.2f, spawnInterval - difficultyIncrement);
+        alcoholEndProbability = Mathf.Min(1.0f, alcoholEndProbability + difficultyIncrement);
+        Debug.Log($"Giorno {currentDay} → spawnInterval={spawnInterval}, alcoholEndProbability={alcoholEndProbability}");
     }
 
     void Update()

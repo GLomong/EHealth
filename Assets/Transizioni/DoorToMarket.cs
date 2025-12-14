@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DoorToMarket : MonoBehaviour
 {
-    public SceneFade sceneFade;          // riferimento al tuo fade panel
+    public SceneFade sceneFade;          // riferimento al fade panel
     public string sceneToLoad = "Market"; // nome scena
 
     private bool isTransitioning = false;
