@@ -795,6 +795,7 @@ MonoBehaviour:
   player: {fileID: 947813962}
   fineGiornoPanel: {fileID: 1961907699}
   endDayText: {fileID: 1433408032}
+  phoneCanvas: {fileID: 317205866}
   speed: 5
   nextSceneName: "Citt\xE0"
 --- !u!61 &215362524
@@ -7762,6 +7763,7 @@ MonoBehaviour:
   player: {fileID: 0}
   fineGiornoPanel: {fileID: 0}
   endDayText: {fileID: 0}
+  phoneCanvas: {fileID: 0}
   speed: 5
   nextSceneName: "Citt\xE0"
 --- !u!114 &1961907701

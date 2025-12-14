@@ -8,6 +8,7 @@ public class TaxiTrigger : MonoBehaviour
     public GameObject player;              // Riferimento al ragazzo
     public GameObject fineGiornoPanel;     // Pannello UI "Fine giorno 1"
     public TMPro.TextMeshProUGUI endDayText; // Testo da mostrare nel pannello
+    public CanvasGroup phoneCanvas;      // canva del telefono
     public float speed = 5f;               // Velocità taxi
     public string nextSceneName = "Città"; // Nome della scena successiva
 
@@ -39,6 +40,11 @@ public class TaxiTrigger : MonoBehaviour
         // Calcolo il punteggio totale del giorno e lo salvo 
         SaveScoreForDay();
         int dayScore = PlayerPrefs.GetInt($"Day{TotalGameManager.Instance.CurrentDay}_TotalScore", 0); // punteggio solo minigiochi, pesato
+        int totalScore = 0;
+        if (TotalGameManager.Instance.CurrentDay >= TotalGameManager.Instance.totalDays)
+        {
+            totalScore = TotalGameManager.Instance.GetTotalGameScore();
+        }
 
         // 1. Preparo pannello e testo
         CanvasGroup cg = fineGiornoPanel.GetComponent<CanvasGroup>();
@@ -48,7 +54,8 @@ public class TaxiTrigger : MonoBehaviour
         Color textColor = endDayText.color;
         textColor.a = 0f;
         endDayText.color = textColor;
-        endDayText.text = "End of Day " + TotalGameManager.Instance.CurrentDay + "\nScore: " + dayScore + "/50";
+        endDayText.text = "End of Day " + TotalGameManager.Instance.CurrentDay + "\nScore: " + dayScore + "/50" + 
+                         (totalScore > 0 ? $"\n\nTotal Score: {totalScore}/200" : "");
 
         float timer = 0f;
         float endAlpha = 0.6f;
@@ -63,6 +70,7 @@ public class TaxiTrigger : MonoBehaviour
             // Fade in del pannello e del testo
             if (timer < fadeInDuration)
             {
+                phoneCanvas.alpha = Mathf.Lerp(1f, 0f, timer / fadeInDuration); // Fai scomparire il canvas del telefono
                 cg.alpha = Mathf.Lerp(0f, endAlpha, timer / fadeInDuration);
                 textColor.a = Mathf.Lerp(0f, 1f, timer / fadeInDuration);
                 endDayText.color = textColor;

@@ -155,6 +155,7 @@ public class TotalGameManager : MonoBehaviour
             PlayerPrefs.DeleteKey($"Day{day}_Notifica1_Score");
             PlayerPrefs.DeleteKey($"Day{day}_Notifica2_Score");
             PlayerPrefs.DeleteKey($"Day{day}_Notifica3_Score");
+            PlayerPrefs.DeleteKey($"PensieroGiorno_{day}_Mostrato");
         }
 
         PlayerPrefs.Save();

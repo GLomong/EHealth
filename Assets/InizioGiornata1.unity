@@ -495,6 +495,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   totalNotifications: 3
   answeredCount: 0
+  allAnswered: 0
+  canFade: 0
+  waitingForChoice: 0
   bottomReplyPanelManager: {fileID: 1518752787}
   xButton: {fileID: 1711189142}
   allAnsweredText: Ok, let's see what I've to do today
@@ -4843,6 +4846,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StartDay1
   nextSceneName: "Citt\xE0"
+  fadeCanvas: {fileID: 793238078}
+  fadeDuration: 1
 --- !u!114 &1962710338
 MonoBehaviour:
   m_ObjectHideFlags: 0
