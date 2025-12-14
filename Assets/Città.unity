@@ -2483,8 +2483,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48604811f5c5c4d398de8bebbdc7ef68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueChoiceUI
-  choiceContainer: {fileID: 278076241}
-  choiceButtonPrefab: {fileID: 0}
 --- !u!4 &834238864
 Transform:
   m_ObjectHideFlags: 0
@@ -5893,7 +5891,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4a4b5effdcded4c4cb7c34a60120a522, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ec5d08ea018fedc4599200a78da77287, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
