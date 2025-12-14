@@ -1274,7 +1274,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1642096559}
   toggleTransition: 1
   graphic: {fileID: 1061086487}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 2145410712}
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1708,7 +1708,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1537151197}
         m_TargetAssemblyTypeName: LaptopManager, Assembly-CSharp
-        m_MethodName: PremiCancel
+        m_MethodName: CancellaLogin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3353,7 +3353,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1622786}
   toggleTransition: 1
   graphic: {fileID: 917807409}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 2145410712}
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3593,7 +3593,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 212485452}
   toggleTransition: 1
   graphic: {fileID: 1130415960}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 2145410712}
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4214,7 +4214,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1128191830}
   toggleTransition: 1
   graphic: {fileID: 553718232}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 2145410712}
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5498,7 +5498,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 406513649}
   toggleTransition: 1
   graphic: {fileID: 826087480}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 2145410712}
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5563,7 +5563,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 902452571}
   toggleTransition: 1
   graphic: {fileID: 652529046}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 2145410712}
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6269,6 +6269,7 @@ GameObject:
   - component: {fileID: 2145410710}
   - component: {fileID: 2145410709}
   - component: {fileID: 2145410711}
+  - component: {fileID: 2145410712}
   m_Layer: 5
   m_Name: SchermataDomande
   m_TagString: Untagged
@@ -6432,6 +6433,19 @@ MonoBehaviour:
   - {fileID: 1937995301}
   - {fileID: 1178345939}
   fadeCanvas: {fileID: 116731364}
+--- !u!114 &2145410712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145410707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ToggleGroup
+  m_AllowSwitchOff: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
