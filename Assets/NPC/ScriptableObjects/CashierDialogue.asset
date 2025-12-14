@@ -19,11 +19,12 @@ MonoBehaviour:
   - Welcome to the supermarket!
   - There is a 3x2 offer on wine today!
   day2Lines:
-  - Dialogue day2
-  - line 2
+  - Welcome! Today there's a special discount just for you!
+  - 'We are offering 50% off the second bottle of Bourbon. '
   day3Lines:
-  - Dialogue day3
-  - line 3
+  - If you are planning a barbecue, you really should check our drink section.
+  - We have great deals on cold beers and red wines that pair perfectly with grilled
+    meat.
   autoProgressDay1: 0100
   autoProgressDay2: 0100
   autoProgressDay3: 0100
@@ -35,16 +36,16 @@ MonoBehaviour:
   - buttonText: "Sounds great, I\u2019ll take some!"
     scoreValue: 0
   day2Choices:
-  - buttonText: scelta positiva
+  - buttonText: 'Oh, thanks, but I''m not really a Bourbon person. '
     scoreValue: 2
-  - buttonText: scelta neutra
+  - buttonText: I'll keep that in mind. Thanks for the heads up.
     scoreValue: 1
-  - buttonText: scelta negativa
+  - buttonText: I'll definitely check out the Bourbon aisle.
     scoreValue: 0
   day3Choices:
-  - buttonText: scelta positiva
+  - buttonText: Thanks, but I'm sticking to water this time.
     scoreValue: 2
-  - buttonText: scleta neutra
+  - buttonText: Good to know. I'll check the prices.
     scoreValue: 1
-  - buttonText: sxelta negativa
+  - buttonText: Sounds like a fantastic excuse to drink with my friends.
     scoreValue: 0

@@ -19,11 +19,15 @@ MonoBehaviour:
   - You know, when I was younger, I used to follow every shortcut through this park.
   - 'Looked faster, easier. Funny thing is: I always ended up more lost than before.'
   day2Lines:
-  - dialogue day2
-  - line2
+  - 'I used to think those shiny, bright flowers grew faster than the rest. '
+  - Turns out, they're often the weeds, choking the roots of anything truly healthy.
   day3Lines:
-  - dialogue day3
-  - line2
+  - 'If you keep walking the same path, it becomes the only way your feet know how
+    to move. '
+  - It takes real effort to step onto new grass.
   autoProgressDay1: 0100
   autoProgressDay2: 0100
   autoProgressDay3: 0100
+  day1Choices: []
+  day2Choices: []
+  day3Choices: []
