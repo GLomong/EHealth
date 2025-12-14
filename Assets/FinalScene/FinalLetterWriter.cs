@@ -1,6 +1,9 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class FinalLetterWriter : MonoBehaviour
 {
@@ -12,9 +15,12 @@ public class FinalLetterWriter : MonoBehaviour
     public float writingSpeed = 0.06f;
 
     public AudioSource typeSound;
+    public string sceneName = "menu";
+    public Button goodbyeButton;
 
     void Start()
     {
+        goodbyeButton.interactable = false;
         letterText.text = "";
         StartCoroutine(TypeLetter());
     }
@@ -54,6 +60,11 @@ public class FinalLetterWriter : MonoBehaviour
 
             yield return new WaitForSeconds(pause);
         }
+        goodbyeButton.interactable = true;
+    }
+    public void OnClickGoodbyeButton()
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }
 

@@ -45,7 +45,17 @@ public class TotalGameManager : MonoBehaviour
     {
         if (CurrentDay >= totalDays)
         {
-            // Se è fintio il terzo giorno, carica la scena finale
+            // Se è fintio il terzo giorno, carica la scena finale a seconda del punteggio totale del gioco 
+            int totalScore = GetTotalGameScore();
+            Debug.Log($"Punteggio totale del gioco: {totalScore}");
+            if (totalScore >= 100)
+            {
+                finalSceneName = "Finale Positivo";
+            }
+            else if (totalScore < 100)
+            {
+                finalSceneName = "Finale Negativo";
+            }
             SceneManager.LoadScene(finalSceneName);
             return;
         }
@@ -71,13 +81,50 @@ public class TotalGameManager : MonoBehaviour
         int total = 0;
         int minigiochi = 0;
         int dialoghi = 0;
+        int notifiche = 0;
+        int narrazione = 0;
         for (int day = 1; day <= totalDays; day++)
         {
             // Somma risultati dei vari giorni 
-            minigiochi += PlayerPrefs.GetInt($"Day{day}_TotalScore", 0);
-            dialoghi += PlayerPrefs.GetInt($"Day{day}_DialoguesScore", 0);
+            minigiochi += PlayerPrefs.GetInt($"Day{day}_TotalScore", 0); // punteggio minigiochi, massimo 50 al giorno
+            dialoghi += PlayerPrefs.GetInt($"Day{day}_DialoguesScore", 0); // punteggio dialoghi, massimo 2 al giorno
+            notifiche += PlayerPrefs.GetInt($"Day{day}_NotificationScore", 0); // punteggio notifiche, massimo 6 al giorno
         }
-        total = minigiochi + dialoghi;
+        // Normalizzazione punteggio dialoghi e notifiche
+        narrazione = (dialoghi + notifiche); // contando che le notifiche ci sono solo al giorno 1, totale massimo di 12 punti
+        minigiochi = Mathf.RoundToInt((minigiochi / (float)(totalDays * 50))*100); // scale 0-100 
+        narrazione = Mathf.RoundToInt((narrazione / (float)((totalDays * 2)+6))*100); // scale 0-100
+
+        // Somma totale (massimo 200 punti)
+        total = minigiochi + narrazione;
+
+        // Analisi trend dei punteggi (narrazione)
+        int previousDayNarrationScore = 0;
+        for (int day = 1; day <= totalDays; day++)
+        {
+            int currentDayDialogues = PlayerPrefs.GetInt($"Day{day}_DialoguesScore", 0);
+            int currentDayNotifications = PlayerPrefs.GetInt($"Day{day}_NotificationScore", 0);
+            int currentDayNarrationScore = currentDayDialogues + currentDayNotifications;
+            if (day > 1)
+            {
+                if (currentDayNarrationScore > previousDayNarrationScore)
+                {
+                    total += 5; // bonus di 5 punti per miglioramento
+                    Debug.Log($"Day {day}: Miglioramento nel punteggio di narrazione rispetto al giorno precedente.");
+                }
+                else if (currentDayNarrationScore < previousDayNarrationScore)
+                {
+                    total -= 5; // penalità di 5 punti per peggioramento
+                    Debug.Log($"Day {day}: Peggioramento nel punteggio di narrazione rispetto al giorno precedente.");
+                }
+                else
+                {
+                    // punteggio invariato, nessuna variazione
+                    Debug.Log($"Day {day}: Nessuna variazione nel punteggio di narrazione rispetto al giorno precedente.");
+                }
+            }
+            previousDayNarrationScore = currentDayNarrationScore;
+        }
         return total;
     }
 
@@ -104,6 +151,10 @@ public class TotalGameManager : MonoBehaviour
             PlayerPrefs.DeleteKey($"Day{day}_DialoguesScore");
             PlayerPrefs.DeleteKey($"Day{day}_OldMan_Spoken");
             PlayerPrefs.DeleteKey($"Day{day}_Kid_Spoken");
+            PlayerPrefs.DeleteKey($"Day{day}_NotificationScore");
+            PlayerPrefs.DeleteKey($"Day{day}_Notifica1_Score");
+            PlayerPrefs.DeleteKey($"Day{day}_Notifica2_Score");
+            PlayerPrefs.DeleteKey($"Day{day}_Notifica3_Score");
         }
 
         PlayerPrefs.Save();

@@ -60,6 +60,10 @@ public class NotificationChoiceUI : MonoBehaviour
 
         if (hasChoosen) return;
         hasChoosen = true;
+
+        // Salva il punteggio Ignore (Neutrale) = 1 punto
+        SaveNotificationScore(1);
+
         // Blocca tutte le altre notifiche
         if (notificationsManager != null)
             notificationsManager.SetWaitingForChoice(true);
@@ -78,6 +82,9 @@ public class NotificationChoiceUI : MonoBehaviour
 
     public void OnReply1Pressed()
     {
+        // Salva il punteggio Reply1 (Negativa) = 0 punti
+        SaveNotificationScore(0);
+
         // Cambia il testo della notifica (quella da cui è partito il Reply)
         if (notificationText != null && !string.IsNullOrEmpty(reply1NotificationText))
         {
@@ -91,6 +98,9 @@ public class NotificationChoiceUI : MonoBehaviour
 
     public void OnReply2Pressed()
     {
+        // Salva il punteggio Reply2 (Positiva) = 2 punti
+        SaveNotificationScore(2);
+
         if (notificationText != null && !string.IsNullOrEmpty(reply2NotificationText))
         {
             replyButton.gameObject.SetActive(false);
@@ -111,5 +121,16 @@ public class NotificationChoiceUI : MonoBehaviour
         {
             notificationAnimator.SetTrigger(showNotificationTrigger);
         }
+    }
+
+    void SaveNotificationScore(int score)
+    {
+        int currentDay = TotalGameManager.Instance.CurrentDay;
+        string notificationKey = $"Day{currentDay}_{gameObject.name}_Score";
+        
+        PlayerPrefs.SetInt(notificationKey, score);
+        PlayerPrefs.Save();
+        
+        Debug.Log($"[{gameObject.name}] Salvato Day{currentDay} Score = {score} in '{notificationKey}'");
     }
 }

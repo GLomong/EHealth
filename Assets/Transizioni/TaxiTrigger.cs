@@ -38,7 +38,7 @@ public class TaxiTrigger : MonoBehaviour
     {
         // Calcolo il punteggio totale del giorno e lo salvo 
         SaveScoreForDay();
-        int dayScore = PlayerPrefs.GetInt($"Day{TotalGameManager.Instance.CurrentDay}_TotalScore", 0);
+        int dayScore = PlayerPrefs.GetInt($"Day{TotalGameManager.Instance.CurrentDay}_TotalScore", 0); // punteggio solo minigiochi, pesato
 
         // 1. Preparo pannello e testo
         CanvasGroup cg = fineGiornoPanel.GetComponent<CanvasGroup>();
@@ -48,7 +48,7 @@ public class TaxiTrigger : MonoBehaviour
         Color textColor = endDayText.color;
         textColor.a = 0f;
         endDayText.color = textColor;
-        endDayText.text = "End of Day " + TotalGameManager.Instance.CurrentDay + "\nScore: " + dayScore;
+        endDayText.text = "End of Day " + TotalGameManager.Instance.CurrentDay + "\nScore: " + dayScore + "/50";
 
         float timer = 0f;
         float endAlpha = 0.6f;
@@ -142,6 +142,11 @@ public class TaxiTrigger : MonoBehaviour
         int influencerScore = PlayerPrefs.GetInt($"Day{currentDay}_InfluencerScore", 0);
         int gentlemenScore = PlayerPrefs.GetInt($"Day{currentDay}_GentlemenScore", 0);
         int friendScore = PlayerPrefs.GetInt($"Day{currentDay}_FriendScore", 0); 
+
+        // Legge i punteggi delle notifiche
+        int notifica1Score = PlayerPrefs.GetInt($"Day{currentDay}_Notifica1_Score", 0);
+        int notifica2Score = PlayerPrefs.GetInt($"Day{currentDay}_Notifica2_Score", 0);
+        int notifica3Score = PlayerPrefs.GetInt($"Day{currentDay}_Notifica3_Score", 0);
     
         // Applica dei pesi ai punteggi dei minigiochi in base al cluster dell'utente
         int cluster = PlayerPrefs.GetInt("UserCluster", 1); // default 1
@@ -178,19 +183,21 @@ public class TaxiTrigger : MonoBehaviour
                 carWeight = 0.25f;
                 break;
         }
-        
 
-        // Calcola il punteggio totale ponderato dei minigiochi
+        // Calcola il punteggio totale ponderato dei minigiochi (max 50 punti)
         float totalScore = (marketScore * marketWeight) +
                            (carScore * carWeight) +
                            (bridgeScore * bridgeWeight) +
                            (danceScore * danceWeight);
         
-        // Calcolo il punteggio totale dei dialoghi 
+        // Calcolo il punteggio totale dei dialoghi (max 2 punti)
         float dialoghiScore = (cashierScore * marketWeight) + 
                                 (influencerScore * carWeight) +
                                 (gentlemenScore * bridgeWeight) +
                                 (friendScore * danceWeight);
+
+        // Calcolo il punteggio totale delle notifiche (max 6 punti)
+        float notificheScore = notifica1Score + notifica2Score + notifica3Score;                     
 
         // Salva il punteggio totale (dei minigiochi) del giorno corrente in PlayerPrefs
         PlayerPrefs.SetInt($"Day{currentDay}_TotalScore", Mathf.RoundToInt(totalScore));
@@ -198,6 +205,10 @@ public class TaxiTrigger : MonoBehaviour
 
         // Salva il punteggio totale dei dialoghi del giorno corrente in PlayerPrefs
         PlayerPrefs.SetInt($"Day{currentDay}_DialoguesScore", Mathf.RoundToInt(dialoghiScore));
+        PlayerPrefs.Save();
+
+        // Salva il punteggio totale delle notifiche del giorno corrente in PlayerPrefs
+        PlayerPrefs.SetInt($"Day{currentDay}_NotificationScore", Mathf.RoundToInt(notificheScore));
         PlayerPrefs.Save();
     }
 }
