@@ -1286,6 +1286,7 @@ GameObject:
   - component: {fileID: 317205863}
   - component: {fileID: 317205865}
   - component: {fileID: 317205864}
+  - component: {fileID: 317205866}
   m_Layer: 5
   m_Name: ListaCoseDaFare
   m_TagString: Untagged
@@ -1350,6 +1351,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317205862}
   m_CullTransparentMesh: 1
+--- !u!225 &317205866
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317205862}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &493456904
 GameObject:
   m_ObjectHideFlags: 0
@@ -7616,6 +7629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   fadeCanvas: {fileID: 1888960629}
+  phoneCanvas: {fileID: 317205866}
   fadeDuration: 1
 --- !u!225 &1888960629
 CanvasGroup:

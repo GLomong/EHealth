@@ -15,6 +15,7 @@ public class FinalLetterWriter : MonoBehaviour
     public float writingSpeed = 0.06f;
 
     public AudioSource typeSound;
+    public SceneFade fadeCanvas;
     public string sceneName = "menu";
     public Button goodbyeButton;
 
@@ -64,7 +65,7 @@ public class FinalLetterWriter : MonoBehaviour
     }
     public void OnClickGoodbyeButton()
     {
-        SceneManager.LoadScene(sceneName);
+        fadeCanvas.FadeToScene(sceneName);
     }
 }
 

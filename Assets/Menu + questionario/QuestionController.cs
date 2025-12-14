@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.Collections;
 
 [System.Serializable]
 public class Domanda
@@ -23,6 +24,7 @@ public class RispostaUtente
 
 public class QuestionController : MonoBehaviour
 {
+    [Header("Questionario")]
     //Inizializzo un array di domande dove inserirò il numero di domande e per ogni domanda inserisco il testo. Per ogni domanda si apre una freccetta in cui inserire testo, numero di risposte e testo delle risposte. 
     public Domanda[] domande;
 //Nell'incpector dovrò inserire il testo che ho creato nel canvas della hierarchy per far capire dove dovrà essere posizionato il testo di ogni domanda nella scena
@@ -33,6 +35,9 @@ public class QuestionController : MonoBehaviour
 
     // Array di toggle: inserisco nell'inspector i toggle (ToggleA, ToggleB, ToggleC, ...)
     public Toggle[] toggles;
+
+    [Header("Transizioni")]
+    public SceneFade fadeCanvas;
 
     private int index = 0;
     private List<RispostaUtente> risposteDate = new List<RispostaUtente>();
@@ -81,7 +86,8 @@ public class QuestionController : MonoBehaviour
             PlayerPrefs.SetInt("ClusterUtente", clusterAssegnato + 1); // +1 per avere cluster da 1 a 4
             PlayerPrefs.Save();
 
-            SceneManager.LoadScene("InizioGiornata1");
+            //SceneManager.LoadScene("InizioGiornata1");
+            fadeCanvas.FadeToScene("InizioGiornata1");
             return;
         }
 

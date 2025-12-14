@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   fadeCanvas: {fileID: 145426933}
+  phoneCanvas: {fileID: 0}
   fadeDuration: 1
 --- !u!114 &145426935
 MonoBehaviour:
@@ -788,6 +789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneFade
   fadeCanvas: {fileID: 145426933}
+  phoneCanvas: {fileID: 0}
   fadeDuration: 1
 --- !u!114 &1653944002
 MonoBehaviour:
