@@ -50,9 +50,8 @@ public class DanceGameManager : MonoBehaviour
             musicSource.Stop();
 
         // Stop allo spawner
-        NoteSpawner spawner = FindObjectOfType<NoteSpawner>();
-        if (spawner != null)
-            spawner.canSpawn = false;
+        if (noteSpawner != null)
+            noteSpawner.canSpawn = false;
         
         // Calcolo punteggio finale (proporzione con 50 punti massimi)
         if (scoreManager != null)
@@ -60,8 +59,9 @@ public class DanceGameManager : MonoBehaviour
             finalScore = scoreManager.score;
             int totalNotes = noteSpawner.totalNotesSpawned;
             int maxScore = totalNotes * 5; // punteggio per il perfect = 5 punti per nota
-            float scorePercentage = (float)finalScore / (float)maxScore; 
+            float scorePercentage = (maxScore > 0) ? Mathf.Clamp01((float)finalScore / (float)maxScore) : 0f; 
             finalGradePoints = Mathf.RoundToInt(scorePercentage * 50);
+            finalGradePoints = Mathf.Clamp(finalGradePoints, 0, 50);
             // Debug.Log($"Game over. Punteggio Finale: {finalGradePoints} punti su 50");
         }
 

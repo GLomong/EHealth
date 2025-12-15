@@ -39,15 +39,15 @@ public class NoteSpawner : MonoBehaviour
                 travelTime = 1.7f;
                 autoSpawnInterval = 1.0f;
                 break;
-            case 3: // FRANCESCO (droga 2/10)
-                // note normali ma spawn leggermente più frequenti
-                travelTime = 2.0f;
-                autoSpawnInterval = 0.8f;
-                break;
-            case 4: // ELENA (droga 0/10)
+            case 3: // ELENA (droga 0/10) 
                 // note normali e spawn normali
                 travelTime = 2.0f;
                 autoSpawnInterval = 1.0f;
+                break;
+            case 4: // FRANCESCO (droga 2/10)
+                // note normali ma spawn leggermente più frequenti
+                travelTime = 2.0f;
+                autoSpawnInterval = 0.8f;
                 break;
         }
         Debug.Log($"Cluster {cluster} → travelTime={travelTime}, spawnInterval={autoSpawnInterval}");

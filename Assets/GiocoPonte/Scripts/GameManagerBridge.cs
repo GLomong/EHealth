@@ -124,7 +124,7 @@ public class GameManagerBridge : MonoBehaviour
     {
         // Salva il punteggio finale del giorno corrente in PlayerPrefs
         int currentDay = TotalGameManager.Instance.CurrentDay;
-
+        finalScore = Mathf.Clamp(finalScore, 0, 50);
         PlayerPrefs.SetInt($"Day{currentDay}_BridgeScore", finalScore);
         PlayerPrefs.Save();
 

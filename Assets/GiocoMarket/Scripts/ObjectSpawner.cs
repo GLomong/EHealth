@@ -41,17 +41,17 @@ public class ObjectSpawner : MonoBehaviour
                 alcoholStartProbability = 0.10f;
                 alcoholEndProbability = 0.40f;
                 break;
-            case 3: // FRANCESCO (alcol 2/40)
-                // spawn oggetti normale
-                spawnInterval = 0.8f;
-                alcoholStartProbability = 0.10f;
-                alcoholEndProbability = 0.30f;
-                break;
-            case 4: // ELENA (alcol 26.5/40)
+            case 3: // ELENA (alcol 26.5/40)
                 // spawn oggetti velocizzato
                 spawnInterval = 1.2f;
                 alcoholStartProbability = 0.30f;
                 alcoholEndProbability = 0.60f;
+                break;
+            case 4: // FRANCESCO (alcol 2/40)
+                // spawn oggetti normale
+                spawnInterval = 0.8f;
+                alcoholStartProbability = 0.10f;
+                alcoholEndProbability = 0.30f;
                 break;
         }
         Debug.Log($"Cluster {cluster} → alcoholStartProbability={alcoholStartProbability}, alcoholEndProbability={alcoholEndProbability}, spawnInterval={spawnInterval}");

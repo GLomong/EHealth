@@ -41,14 +41,14 @@ public class BridgeGame : MonoBehaviour
                 fallChance2 = 0.2f;
                 fallChance3 = 0.4f;
                 break;
-            case 3: // FRANCESCO (gambling 6/27)
+            case 3: // ELENA (gambling 15/27)
+                fallChance2 = 0.4f;
+                fallChance3 = 0.6f;
+                break;
+            case 4: // FRANCESCO (gambling 6/27)
                 // valori più alti di poco
                 fallChance2 = 0.3f;
                 fallChance3 = 0.5f;
-                break;
-            case 4: // ELENA (gambling 15/27)
-                fallChance2 = 0.4f;
-                fallChance3 = 0.6f;
                 break;
         }
 

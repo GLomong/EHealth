@@ -24,13 +24,13 @@ public class NotificationManager : MonoBehaviour
                 // notifiche normali
                 interval = 5.0f;
                 break;
-            case 3: // FRANCESCO (internet 91/10)
-                // notifiche molto piu frequenti
-                interval = 2.0f;
-                break;
-            case 4: // ELENA (internet 39/100)
+            case 3: // ELENA (internet 39/100)
                 // notifiche leggermente piu frequenti
                 interval = 4.0f;
+                break;
+            case 4: // FRANCESCO (internet 91/10)
+                // notifiche molto piu frequenti
+                interval = 2.0f;
                 break;
         }
         Debug.Log($"Cluster {cluster} → interval={interval}");

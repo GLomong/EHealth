@@ -192,7 +192,7 @@ public class TaxiTrigger : MonoBehaviour
                 break;
         }
 
-        // Calcola il punteggio totale ponderato dei minigiochi (max 50 punti)
+        // Calcola il punteggio ponderato dei minigiochi (risultato normalizzato 0-50)
         float totalScore = (marketScore * marketWeight) +
                            (carScore * carWeight) +
                            (bridgeScore * bridgeWeight) +
@@ -208,7 +208,9 @@ public class TaxiTrigger : MonoBehaviour
         float notificheScore = notifica1Score + notifica2Score + notifica3Score;                     
 
         // Salva il punteggio totale (dei minigiochi) del giorno corrente in PlayerPrefs
-        PlayerPrefs.SetInt($"Day{currentDay}_TotalScore", Mathf.RoundToInt(totalScore));
+        int totalScoreInt = Mathf.RoundToInt(totalScore);
+        totalScoreInt = Mathf.Clamp(totalScoreInt, 0, 50);
+        PlayerPrefs.SetInt($"Day{currentDay}_TotalScore", totalScoreInt);
         PlayerPrefs.Save();
 
         // Salva il punteggio totale dei dialoghi del giorno corrente in PlayerPrefs

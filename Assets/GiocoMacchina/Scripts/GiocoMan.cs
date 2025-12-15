@@ -114,20 +114,27 @@ public class GiocoMan : MonoBehaviour
         int finalGradePointsNotifiche = 0;
 
         // Calcolo punteggio coni (proporzione con 50 punti massimi)
-        if (carCollision != null)
-            score_coni = carCollision.conesHit;
-            int maxScoreConi = totalSpawnedCones;
-            float scorePercentageConi = (float)score_coni / (float)maxScoreConi; 
-            finalGradePointsConi = Mathf.RoundToInt(scorePercentageConi * 50);
-            Debug.Log($"Game over. Punteggio Coni: {finalGradePointsConi} punti su 50");
-
-        // Calcolo punteggio notifiche (proporzione con 50 punti massimi)
-        if (score != null)
+        if (carCollision != null && totalSpawnedCones > 0)
         {
-            int maxScore = totalNotificationsSpawned;
-            float scorePercentage = (float)score / (float)maxScore; 
-            finalGradePointsNotifiche = Mathf.RoundToInt(scorePercentage * 50);
+            score_coni = carCollision.conesHit;
+            float scorePercentageConi = Mathf.Clamp01((float)score_coni / (float)totalSpawnedCones); 
+            finalGradePointsConi = Mathf.RoundToInt(scorePercentageConi * 50f);
+            Debug.Log($"Game over. Punteggio Coni: {finalGradePointsConi} punti su 50");
+        }
+        else
+        {
+            finalGradePointsConi = 0; 
+        }
+        // Calcolo punteggio notifiche (proporzione con 50 punti massimi)
+        if (totalNotificationsSpawned > 0)
+        {
+            float scorePercentage = Mathf.Clamp01((float)score / (float)totalNotificationsSpawned);
+            finalGradePointsNotifiche = Mathf.RoundToInt(scorePercentage * 50f);
             Debug.Log($"Game over. Punteggio Notifiche: {finalGradePointsNotifiche} punti su 50");
+        }
+        else
+        {
+            finalGradePointsNotifiche = 0;
         }
 
         // Faccio la media dei due punteggi per il punteggio finale
@@ -141,6 +148,7 @@ public class GiocoMan : MonoBehaviour
     {
         // Salva il punteggio finale del giorno corrente in PlayerPrefs
         int currentDay = TotalGameManager.Instance.CurrentDay;
+        finalGradePoints = Mathf.Clamp(finalGradePoints, 0, 50);
         PlayerPrefs.SetInt($"Day{currentDay}_CarScore", finalGradePoints);
         PlayerPrefs.Save();
         Debug.Log($"[CarGameManager] Salvato Day {currentDay} Score = {finalGradePoints}");

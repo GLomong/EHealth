@@ -118,9 +118,10 @@ public class GameManager : MonoBehaviour
     {
         // Salva il punteggio finale del giorno corrente in PlayerPrefs
         int currentDay = TotalGameManager.Instance.CurrentDay;
-        PlayerPrefs.SetInt($"Day{currentDay}_MarketScore", score);
+        int safesScore = Mathf.Clamp(score, 0, 50);
+        PlayerPrefs.SetInt($"Day{currentDay}_MarketScore", safesScore);
         PlayerPrefs.Save();
-        Debug.Log($"[MarketGameManager] Salvato Day {currentDay} Score = {score}");
+        Debug.Log($"[MarketGameManager] Salvato Day {currentDay} Score = {safesScore}");
     }
 }
 
