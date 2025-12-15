@@ -19,11 +19,11 @@ MonoBehaviour:
   - Why go slow? Big steps mean big wins!
   - Slow and steady keeps you safe, but you won't win that way!
   day2Lines:
-  - dialogue day2
-  - line2
+  - Life's too short for 'what ifs!
+  - You gotta take a leap to get the real reward.
   day3Lines:
-  - dialogue day3
-  - line3
+  - You can always play it safe..
+  - but the best stories aren't told by those on the sidelines.
   autoProgressDay1: 0100
   autoProgressDay2: 0100
   autoProgressDay3: 0100
@@ -35,18 +35,16 @@ MonoBehaviour:
   - buttonText: "Fine, I\u2019ll take the risk!"
     scoreValue: 0
   day2Choices:
-  - buttonText: scleta positiva
+  - buttonText: That's just a lazy excuse.
     scoreValue: 2
-  - buttonText: 
-    scoreValue: 0
-  - buttonText: scelta neutra
+  - buttonText: I'm not feeling brave enough today..
     scoreValue: 1
-  - buttonText: scelta negativa
+  - buttonText: You're right. No regrets!
     scoreValue: 0
   day3Choices:
-  - buttonText: scelta positiva
+  - buttonText: I'd rather be safe and boring than reckless.
     scoreValue: 2
-  - buttonText: scelta neutra
+  - buttonText: I get your point, but I'm not sure..
     scoreValue: 1
-  - buttonText: scelta negativa
+  - buttonText: ..I want an epic memory to tell to others. Let's do it!
     scoreValue: 0

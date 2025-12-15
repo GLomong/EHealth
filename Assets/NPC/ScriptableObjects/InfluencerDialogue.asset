@@ -19,11 +19,11 @@ MonoBehaviour:
   - Bro, have you seen today's viral challenge?
   - You have to check your phone right now!
   day2Lines:
-  - dialogue day2
-  - line2
+  - 'Stop whatever you''re doing! '
+  - This video is absolutely insane, you've got to see this!
   day3Lines:
-  - dialogue day3
-  - line3
+  - 'You still haven''t watched the new TikTok trend? '
+  - Seriously, you're missing out on the biggest thing happening today.
   autoProgressDay1: 0100
   autoProgressDay2: 0100
   autoProgressDay3: 0100
@@ -35,16 +35,16 @@ MonoBehaviour:
   - buttonText: "Show me! \nI can\u2019t miss it!"
     scoreValue: 0
   day2Choices:
-  - buttonText: scelta positiva
+  - buttonText: Nothing online is that important.
     scoreValue: 2
-  - buttonText: scelta neutra
+  - buttonText: Send me the link and I'll watch it later.
     scoreValue: 1
-  - buttonText: scelta negativa
+  - buttonText: Okay, let me see that thing.
     scoreValue: 0
   day3Choices:
-  - buttonText: scelta positiva
+  - buttonText: I'm happy to miss it.
     scoreValue: 2
-  - buttonText: scelta neutra
+  - buttonText: "If it\u2019s still around tomorrow, I might check it out."
     scoreValue: 1
-  - buttonText: scelta negativa
+  - buttonText: I knew I forgot something! What's the hashtag?
     scoreValue: 0

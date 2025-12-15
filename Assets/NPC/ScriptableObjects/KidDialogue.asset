@@ -19,11 +19,14 @@ MonoBehaviour:
   - Last slide, I promise! Mom\u2019s calling again.
   - Why is it so hard to stop even when I know I should?
   day2Lines:
-  - dialogue day2
-  - line2
+  - My tummy tells me it's dinner time, but my feet just want one more slide..
+  - This can't be fair!!
   day3Lines:
-  - dialogue day3
-  - line3
+  - If I'm supposed to be free to choose, why am I not able to?
+  - I want to stop, but I just keep climbing back up!
   autoProgressDay1: 0100
   autoProgressDay2: 0100
   autoProgressDay3: 0100
+  day1Choices: []
+  day2Choices: []
+  day3Choices: []

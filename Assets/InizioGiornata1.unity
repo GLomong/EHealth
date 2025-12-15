@@ -684,7 +684,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 120, y: 60}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &357094030
 MonoBehaviour:
@@ -2657,7 +2657,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 280, y: -22}
-  m_SizeDelta: {x: 520, y: 80}
+  m_SizeDelta: {x: 520, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1125995957
 MonoBehaviour:
@@ -2679,7 +2679,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Why are you not here already?!
+  m_text: You're late.. again!! Where are you?!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2815,7 +2815,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Yo bro, are you coming tonight?
+  m_text: Hey bro, U coming tonight?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3102,7 +3102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   bottomReplyPanelManager: {fileID: 1518752787}
   notificationsManager: {fileID: 196160432}
-  replyText: Yeah I should probably reply... But What should I text?
+  replyText: I should probably reply...
   ignoreText: Uff... I'll reply later... Maybe...
   notificationText: {fileID: 2122323409}
   reply1Label: You're such a bother...
@@ -3627,7 +3627,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 120, y: 60}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1657294889
 MonoBehaviour:
@@ -4111,13 +4111,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NotificationChoiceUI
   bottomReplyPanelManager: {fileID: 1518752787}
   notificationsManager: {fileID: 196160432}
-  replyText: "Oh \xE8 da tanto che non sentivo Mark"
-  ignoreText: Oh no Mark, I may not reply... right?
+  replyText: Oh, it's been a while since I last heard from Mark.
+  ignoreText: Oh no it's Mark! I don't want to talk to him right now..
   notificationText: {fileID: 1197371471}
-  reply1Label: forse... ho impegni migliori
-  reply2Label: certo amico non manco mai
-  reply1NotificationText: Ah... i feel like a ruota di scorta...
-  reply2NotificationText: Oh perfect! See you tonight!
+  reply1Label: I have better plans.
+  reply2Label: I'd never miss a party!
+  reply1NotificationText: Lately i feel like a spare wheel with you..
+  reply2NotificationText: K perfect! See you tonight!
   replyButton: {fileID: 663838808}
   ignoreButton: {fileID: 1776789897}
   xButton: {fileID: 1711189142}
@@ -4509,13 +4509,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NotificationChoiceUI
   bottomReplyPanelManager: {fileID: 1518752787}
   notificationsManager: {fileID: 196160432}
-  replyText: Uff... What can I say?
-  ignoreText: ... I don't really want to reply...
+  replyText: Ugh... how should I reply?
+  ignoreText: Mh... I don't really want to answer him...
   notificationText: {fileID: 1125995957}
-  reply1Label: non so se riesco a venire oggi...
-  reply2Label: 'I''m sorry, sto arrivando '
-  reply1NotificationText: "non va bene cos\xEC, dobbiamo parlare..."
-  reply2NotificationText: ok, ti aspettiamo
+  reply1Label: I can't make it today..
+  reply2Label: I'll be there in 10!
+  reply1NotificationText: This ain't right! We have to talk asap.
+  reply2NotificationText: 'Ok.. hurry! '
   replyButton: {fileID: 649996951}
   ignoreButton: {fileID: 2061868226}
   xButton: {fileID: 1711189142}
@@ -5110,7 +5110,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 280, y: -22}
-  m_SizeDelta: {x: 520, y: 80}
+  m_SizeDelta: {x: 520, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2122323409
 MonoBehaviour:
@@ -5132,7 +5132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ricorda la spesa per la nonna...
+  m_text: Remember to go grocery shopping for Nana!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

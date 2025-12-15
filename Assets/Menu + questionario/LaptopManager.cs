@@ -46,6 +46,16 @@ public class LaptopManager : MonoBehaviour
             Debug.Log("Inserisci nome e password!");
         }
     }
+    
+    // Bottone "CANCEL" nel login, una volta premuto si cancellano nome utente e password inseriti
+    public void CancellaLogin()
+    {
+        campoNome.text = "";
+        campoPassword.text = "";
+
+        campoNome.ActivateInputField(); // opzionale: rimette il cursore sul nome
+    }
+
 
     // Bottone CONTINUE nell'introduzione: una volta premuto il bottone 'continue' iniziano le domande del questionario:
     public void ContinuaAlleDomande()
