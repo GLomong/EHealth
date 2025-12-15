@@ -47,8 +47,8 @@ public class QuestionController : MonoBehaviour
     {
         new float[] { 0.075f, 0.8f, 0f, 0.645f }, // Cluster 1: LUCA
         new float[] { 0.25f, 0.4f, 0.074f, 0.16f }, // Cluster 2: PIETRO
-        new float[] { 0.05f, 0.2f, 0.222f, 0.91f }, // Cluster 3: FRANCESCO
-        new float[] { 0.6625f, 0f, 0.5556f, 0.39f }  // Cluster 4: ELENA
+        new float[] { 0.6625f, 0f, 0.5556f, 0.39f },  // Cluster 3: ELENA
+        new float[] { 0.05f, 0.2f, 0.222f, 0.91f } // Cluster 4: FRANCESCO
     };
 
     void Start()

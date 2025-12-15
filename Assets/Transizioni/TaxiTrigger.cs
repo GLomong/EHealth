@@ -178,17 +178,17 @@ public class TaxiTrigger : MonoBehaviour
                 bridgeWeight = 0.1f;
                 carWeight = 0.25f;
                 break;
-            case 3: // FRANCESCO (internet altissimo)
-                marketWeight = 0.15f;
-                danceWeight = 0.3f;
-                bridgeWeight = 0.15f;
-                carWeight = 0.4f;
-                break;
-            case 4: // ELENA (alcolismo alto e internet medio-basso e gambling alto)
+            case 3: // ELENA (alcolismo alto e internet medio-basso e gambling alto) 
                 marketWeight = 0.4f;
                 danceWeight = 0.05f;
                 bridgeWeight = 0.3f;
                 carWeight = 0.25f;
+                break;
+            case 4: // FRANCESCO (internet altissimo)
+                marketWeight = 0.15f;
+                danceWeight = 0.3f;
+                bridgeWeight = 0.15f;
+                carWeight = 0.4f;
                 break;
         }
 
