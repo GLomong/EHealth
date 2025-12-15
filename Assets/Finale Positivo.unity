@@ -1290,7 +1290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FinalLetterWriter
   letterText: {fileID: 1583357123}
-  fullMessage: "Dear me, \n\nI remember when I felt like you\u2019re feeling right
+  fullMessage: "Dear Me, \n\nI remember when I felt like you\u2019re feeling right
     now and the urge of taking shortcuts because the long way seemed too hard. But
     you chose to follow a different path. \n\nYou resisted temptations and talked
     to others, even when you didn\u2019t want to. Those felt like small, insignificant
